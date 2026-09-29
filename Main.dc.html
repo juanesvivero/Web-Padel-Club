@@ -12,47 +12,187 @@
 <body>
 <x-dc>
 <helmet>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'Manrope', sans-serif; background: #0b1f18; color: #f4efe0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; background: #0b1f18; color: #f4efe0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { color: inherit; text-decoration: none; }
-  .apc-serif { font-family: 'Fraunces', serif; }
-  
-  .apc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: 0.02em; transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
-  .apc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+  h1, h2, h3, h4, p, ul, dl, dd, figure { margin: 0; }
+  .apc-serif { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+
+  /* Botones */
+  .apc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 14.5px; letter-spacing: 0.01em; transition: transform 0.15s ease, background 0.15s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
+  .apc-btn:hover { transform: translateY(-2px); }
   .apc-btn-primary { background: #c8a24a; color: #0b1f18; }
   .apc-btn-primary:hover { background: #d9b665; }
-  .apc-btn-ghost { background: rgba(244,239,224,0.06); color: #f4efe0; border-color: rgba(244,239,224,0.3); }
-  .apc-btn-ghost:hover { border-color: #f4efe0; background: rgba(244,239,224,0.12); }
-  
-  .apc-card { transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
-  .apc-card:hover { transform: translateY(-4px); border-color: rgba(200,162,74,0.55) !important; box-shadow: 0 16px 36px rgba(0,0,0,0.35) !important; }
-  
+  .apc-btn-dark { background: #0b1f18; color: #f4efe0; }
+  .apc-btn-dark:hover { background: #17362a; }
+  .apc-text-link { font-size: 15px; font-weight: 700; color: #f4efe0; padding-bottom: 4px; border-bottom: 1px solid rgba(200,162,74,0.6); transition: color 0.15s ease, border-color 0.15s ease; }
+  .apc-text-link:hover { color: #c8a24a; border-color: #c8a24a; }
+
   .apc-nav-link { position: relative; padding: 6px 4px; font-size: 14px; font-weight: 600; color: #e9e4d4; opacity: 0.85; transition: opacity 0.15s ease, color 0.15s ease; }
   .apc-nav-link:hover { opacity: 1; color: #c8a24a; }
   .apc-burger { display: none; }
-  
-  .apc-facility-img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
-  
-  .apc-slider-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(11,31,24,0.85); border: 1px solid rgba(200,162,74,0.5); color: #f4efe0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; }
-  .apc-slider-btn:hover { background: #c8a24a; color: #0b1f18; }
-  
+
+  /* Estructura */
+  .apc-section { padding: clamp(72px,10vw,130px) 24px; }
+  .apc-wrap { max-width: 1180px; margin: 0 auto; }
+  .apc-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px 64px; flex-wrap: wrap; }
+  .apc-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,7vw,96px); align-items: start; }
+
+  /* Tipografía */
+  .apc-eyebrow { display: flex; align-items: center; gap: 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #c8a24a; }
+  .apc-eyebrow::before { content: ''; width: 40px; height: 1px; background: currentColor; }
+  .apc-h2 { font-size: clamp(38px,6vw,76px); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em; max-width: 720px; }
+  .apc-h3 { font-size: clamp(26px,3.4vw,40px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; }
+  .apc-h4 { font-size: 19px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+  .apc-lead { font-size: 17px; line-height: 1.7; color: #cfc9b8; }
+  .apc-body { font-size: 16px; line-height: 1.7; color: #cfc9b8; }
+  .apc-small { font-size: 14px; line-height: 1.6; color: #a9a294; }
+  .apc-kicker { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #c8a24a; }
+
+  /* Filas y celdas */
+  .apc-row { display: flex; align-items: baseline; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(244,239,224,0.14); font-size: 16px; line-height: 1.5; color: #e9e4d4; }
+  .apc-row:last-child { border-bottom: 1px solid rgba(244,239,224,0.14); }
+  .apc-row-n { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; color: #c8a24a; min-width: 26px; }
+  .apc-wa { justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; transition: color 0.15s ease; }
+  .apc-wa:hover { color: #c8a24a; }
+  .apc-social { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #f4efe0; transition: color 0.15s ease; }
+  .apc-social:hover { color: #c8a24a; }
+
+  .apc-4col { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(244,239,224,0.14); }
+  .apc-cell { display: flex; flex-direction: column; gap: 10px; padding: 26px 28px 26px 0; }
+  .apc-cell + .apc-cell { padding-left: 28px; border-left: 1px solid rgba(244,239,224,0.14); }
+  .apc-fact { font-size: 20px; font-weight: 700; line-height: 1.25; color: #f4efe0; }
+
+  /* Fotos */
+  .apc-photo { display: block; width: 100%; object-fit: cover; border-radius: 6px; }
+  .apc-fac-row { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(28px,6vw,80px); align-items: center; }
+  .apc-fac-row.rev { grid-template-columns: 5fr 7fr; }
+  .apc-fac-row.rev > :first-child { order: 2; }
+  .apc-tour-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 28px; padding: 36px 0 32px; }
+
+  .apc-gallery { display: grid; grid-template-columns: 7fr 5fr; grid-template-rows: repeat(2, clamp(200px,24vw,300px)); gap: 16px; }
+  .apc-g { position: relative; overflow: hidden; border-radius: 6px; background: #081712; }
+  .apc-g-big { grid-row: 1 / span 2; }
+  .apc-g img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .apc-g:hover img { transform: scale(1.04); }
+  .apc-g figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 18px; background: linear-gradient(180deg, transparent, rgba(8,23,18,0.85)); font-size: 15px; font-weight: 600; color: #f4efe0; }
+  .apc-g figcaption span { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #c8a24a; margin-bottom: 2px; }
+
+  .apc-location-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(32px,6vw,80px); align-items: stretch; }
+
+  /* Sección clara (Academia) */
+  .apc-light { background: #f4efe0; color: #0b1f18; }
+  .apc-light .apc-eyebrow, .apc-gold-dark { color: #8a6a1f; }
+  .apc-light .apc-lead, .apc-light .apc-body { color: #34463c; }
+  .apc-muted { color: #5a6a60; }
+  .apc-dash { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5; color: #34463c; }
+  .apc-dash li::before { content: '— '; color: #8a6a1f; font-weight: 700; }
+
+  .apc-trainers { display: grid; grid-template-columns: 1fr 1fr; }
+  .apc-trainer { display: flex; flex-direction: column; gap: 22px; padding: 32px 40px 8px 0; }
+  .apc-trainer + .apc-trainer { padding-left: 40px; padding-right: 0; border-left: 1px solid rgba(11,31,24,0.18); }
+
+  .apc-prog { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px,6vw,80px); padding: 44px 0; border-top: 2px solid #0b1f18; align-items: start; }
+  .apc-meta { display: flex; flex-direction: column; margin-top: 6px; }
+  .apc-meta > div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid rgba(11,31,24,0.18); font-size: 14.5px; }
+  .apc-meta dt { color: #5a6a60; font-weight: 600; }
+  .apc-meta dd { font-weight: 700; text-align: right; }
+
+  .apc-ptable { width: 100%; border-collapse: collapse; min-width: 420px; text-align: right; font-variant-numeric: tabular-nums; }
+  .apc-ptable th { padding: 12px 10px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5a6a60; border-bottom: 2px solid #0b1f18; }
+  .apc-ptable td { padding: 18px 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; border-bottom: 1px solid rgba(11,31,24,0.18); }
+  .apc-ptable th:first-child, .apc-ptable td:first-child { text-align: left; padding-left: 0; }
+  .apc-ptable td:first-child { font-size: 16px; letter-spacing: 0; }
+  .apc-ptable td span { display: block; font-size: 12.5px; font-weight: 500; color: #5a6a60; margin-top: 2px; }
+  .apc-ptable .hl { background: rgba(200,162,74,0.2); }
+
   @media (max-width: 992px) {
     .apc-nav-links { display: none !important; }
     .apc-burger { display: flex !important; }
-    .apc-about-grid { grid-template-columns: 1fr !important; }
-    .apc-about-visual { order: -1; }
-    .apc-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .apc-pricing-wrap { overflow-x: auto; }
+    .apc-hero-grid { grid-template-columns: 1fr !important; }
+    .apc-hero-photo { justify-self: center !important; max-width: 320px !important; margin: 16px auto 0 !important; }
+    .apc-hero-photo > div[aria-hidden="true"] { transform: translate(10px, 10px) !important; }
+    .apc-split, .apc-location-grid, .apc-prog, .apc-trainers { grid-template-columns: 1fr; }
+    .apc-fac-row, .apc-fac-row.rev { grid-template-columns: 1fr; }
+    .apc-fac-row.rev > :first-child { order: 0; }
+    .apc-4col { grid-template-columns: repeat(2, 1fr); }
+    .apc-cell + .apc-cell { padding-left: 0; border-left: none; }
+    .apc-cell { border-bottom: 1px solid rgba(244,239,224,0.14); padding-right: 16px; }
+    .apc-trainer, .apc-trainer + .apc-trainer { padding: 28px 0 8px; border-left: none; }
+    .apc-trainer + .apc-trainer { border-top: 1px solid rgba(11,31,24,0.18); margin-top: 24px; }
     .apc-footer-grid { grid-template-columns: 1fr !important; }
-    .apc-location-grid { grid-template-columns: 1fr !important; }
+    .apc-gallery { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: clamp(200px,50vw,300px); }
+    .apc-g-big { grid-row: auto; }
   }
+
   @media (max-width: 640px) {
-    .apc-cards-grid { grid-template-columns: 1fr !important; }
-    .apc-hero-ctas { flex-direction: column !important; align-items: stretch !important; }
-    .apc-hero-ctas .apc-btn { width: 100%; }
+    /* Padding y contención general */
+    .apc-section { padding: 46px 16px !important; }
+    .apc-wrap { width: 100% !important; }
+    .apc-head { gap: 20px 32px !important; }
+    .apc-nav-inner { padding: 10px 16px !important; }
+
+    /* Hero section compacto y sin desborde */
+    #inicio { padding: 36px 16px 44px !important; }
+    .apc-hero-grid { gap: 32px !important; }
+    h1.apc-serif { font-size: clamp(34px, 8.8vw, 46px) !important; line-height: 1.02 !important; letter-spacing: -0.035em !important; }
+    .apc-hero-actions { flex-direction: column !important; align-items: stretch !important; width: 100% !important; gap: 14px !important; }
+    .apc-hero-actions .apc-btn { width: 100% !important; text-align: center !important; }
+    .apc-hero-actions .apc-text-link { text-align: center !important; align-self: center !important; }
+    .apc-hero-photo { max-width: 270px !important; margin: 8px auto 0 !important; justify-self: center !important; }
+    .apc-hero-photo > div[aria-hidden="true"] { transform: translate(8px, 8px) !important; }
+
+    /* Tipografía balanceada */
+    .apc-h2 { font-size: clamp(27px, 7.4vw, 40px) !important; line-height: 1.06 !important; }
+    .apc-h3 { font-size: clamp(21px, 5.4vw, 28px) !important; line-height: 1.15 !important; }
+    .apc-lead { font-size: 15px !important; line-height: 1.6 !important; }
+    .apc-body { font-size: 14.5px !important; line-height: 1.6 !important; }
+
+    /* Tablas de precios: compactas, legibles y sin desbordes */
+    .apc-prog { padding: 28px 0 !important; gap: 20px !important; }
+    .apc-ptable { min-width: 310px !important; font-size: 13.5px !important; }
+    .apc-ptable th { padding: 8px 6px !important; font-size: 10.5px !important; letter-spacing: 0.06em !important; }
+    .apc-ptable td { padding: 10px 6px !important; font-size: 16px !important; }
+    .apc-ptable td:first-child { font-size: 13px !important; line-height: 1.25 !important; padding-right: 6px !important; }
+    .apc-ptable td span { font-size: 10.5px !important; }
+    .apc-meta > div { padding: 9px 0 !important; font-size: 13.5px !important; }
+
+    /* Entrenadores */
+    .apc-trainer h4.apc-h3 { font-size: 24px !important; }
+    .apc-trainer .apc-btn { width: 100% !important; text-align: center !important; }
+
+    /* Cuadrícula de 4 columnas en 2x2 para Torneos y Servicios */
+    .apc-4col { grid-template-columns: repeat(2, 1fr) !important; gap: 1px !important; background: rgba(244,239,224,0.14) !important; border-top: 1px solid rgba(244,239,224,0.14) !important; border-bottom: 1px solid rgba(244,239,224,0.14) !important; }
+    .apc-cell { background: #0b1f18 !important; padding: 14px 12px !important; border: none !important; }
+    .apc-fact { font-size: 15px !important; line-height: 1.25 !important; }
+    .apc-small { font-size: 12.5px !important; }
+    .apc-tour-head { gap: 16px !important; padding: 22px 0 18px !important; }
+    .apc-tour-head .apc-btn { width: 100% !important; }
+
+    /* Galería */
+    .apc-gallery { grid-auto-rows: clamp(160px, 44vw, 210px) !important; gap: 10px !important; }
+
+    /* Mapa y ubicación */
+    .apc-map-box, .apc-map-box iframe { min-height: 280px !important; height: 280px !important; }
+    .apc-wa { flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; padding: 12px 0 !important; }
+    .apc-location-grid .apc-btn { width: 100% !important; text-align: center !important; }
+
+    /* Footer */
+    footer { padding: 36px 16px 28px !important; }
+    .apc-footer-grid { gap: 24px !important; }
+    .apc-social { font-size: 14px !important; }
+
+    /* Botón flotante WhatsApp */
+    .apc-wa-float { bottom: 18px !important; right: 18px !important; width: 52px !important; height: 52px !important; }
+    .apc-wa-float svg { width: 24px !important; height: 24px !important; }
+  }
+
+  @media (max-width: 380px) {
+    .apc-4col { grid-template-columns: 1fr !important; }
+    .apc-ptable td { font-size: 14.5px !important; }
   }
 </style>
 </helmet>
@@ -61,7 +201,7 @@
 
   <!-- 1. ENCABEZADO Y NAVEGACIÓN (Sticky Navbar) -->
   <header style="position: sticky; top: 0; z-index: 50; width: 100%; background: rgba(11,31,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,162,74,0.18);">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+    <div class="apc-nav-inner" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       
       <!-- Brand Logo -->
       <a href="#inicio" style="display: flex; align-items: center; gap: 12px;">
@@ -69,10 +209,10 @@
           <img src="./Logo.png" alt="Ambato Pádel Center Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
         </div>
         <div style="display: flex; flex-direction: column;">
-          <span style="font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; letter-spacing: 0.02em; line-height: 1.1; color: #f4efe0;">
+          <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.02em; line-height: 1.1; color: #f4efe0;">
             AMBATO
           </span>
-          <span style="font-size: 10.5px; letter-spacing: 0.18em; opacity: 0.85; font-family: 'Manrope', sans-serif; font-weight: 800; color: #c8a24a; line-height: 1.1; margin-top: 2px;">
+          <span style="font-size: 10.5px; letter-spacing: 0.18em; opacity: 0.85; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; color: #c8a24a; line-height: 1.1; margin-top: 2px;">
             PÁDEL CENTER
           </span>
         </div>
@@ -123,543 +263,318 @@
   </header>
 
   <!-- 2. HERO SECTION (Pantalla Principal con Carrusel/Slider + Barra de Noticias) -->
-  <section id="inicio" style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 90vh; padding: clamp(80px,12vw,140px) 24px clamp(60px,8vw,100px); background: linear-gradient(180deg, rgba(11,31,24,0.85) 0%, rgba(11,31,24,0.95) 100%), url('images/cancha.jpg') center/cover no-repeat; text-align: center;">
-    
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 35%, rgba(200,162,74,0.18), transparent 65%); pointer-events: none;"></div>
+  <section id="inicio" style="background: #0b1f18; padding: clamp(40px,6vw,80px) 24px clamp(56px,7vw,96px);">
+    <div class="apc-hero-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px,6vw,88px); align-items: center;">
 
-    <div style="position: relative; z-index: 10; max-width: 820px; display: flex; flex-direction: column; align-items: center; gap: 24px;">
-      
-      <!-- Emblem Logo -->
-      <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: #013123; border: 2.5px solid rgba(200,162,74,0.8); box-shadow: 0 16px 38px rgba(0,0,0,0.6), 0 0 35px rgba(200,162,74,0.35); overflow: hidden; flex-shrink: 0;">
-        <img src="./Logo.png" alt="Ambato Pádel Center" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      <!-- Texto -->
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 28px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="width: 40px; height: 1px; background: #c8a24a;"></span>
+          <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: #c8a24a;">Ambato · Ecuador</span>
+        </div>
+
+        <h1 class="apc-serif" style="margin: 0; font-size: clamp(46px,7.6vw,100px); line-height: 0.94; font-weight: 800; letter-spacing: -0.04em; color: #f4efe0;">
+          Pádel bajo techo, <span style="color: #c8a24a;">a tu manera.</span>
+        </h1>
+
+        <p style="margin: 0; max-width: 470px; font-size: clamp(16px,1.5vw,18px); line-height: 1.7; color: #cfc9b8;">
+          Canchas panorámicas techadas, academia para todas las edades y torneos abiertos. Escríbenos por WhatsApp y te confirmamos tu horario.
+        </p>
+
+        <div class="apc-hero-actions" style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap; margin-top: 4px;">
+          <a class="apc-btn apc-btn-primary" href="{{waLink}}" target="_blank" rel="noopener" style="padding: 16px 30px; font-size: 15px;">
+            <svg width="19" height="19" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 1.45.41 2.8 1.12 3.95L1.5 16.5l3.67-1.1A7.44 7.44 0 0 0 9 16.5c4.14 0 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5Z" stroke="#0b1f18" stroke-width="1.3"></path><path d="M6.4 6.6c.2-.6.8-.5 1.2.2.3.5.6.9.4 1.3-.2.4-.6.6-.4 1 .3.7 1 1.4 1.7 1.7.4.2.6-.2 1-.4.4-.2.8.1 1.3.4.7.4.8 1 .2 1.2-1.4.5-3-.2-4.1-1.3-1.1-1.1-1.8-2.7-1.3-4.1Z" fill="#0b1f18"></path></svg>
+            Reservar cancha
+          </a>
+          <a class="apc-text-link" href="#clases">Ver clases <span aria-hidden="true">→</span></a>
+        </div>
       </div>
 
-      <!-- Eslogan Principal -->
-      <h1 class="apc-serif" style="margin: 0; font-size: clamp(38px,6.5vw,66px); line-height: 1.08; font-weight: 600; color: #f4efe0; text-shadow: 0 2px 20px rgba(0,0,0,0.5);">
-        La nueva experiencia<br>de Pádel en Ambato
-      </h1>
-
-      <!-- Subtítulo -->
-      <p style="margin: 0; max-width: 620px; font-size: clamp(16px,2vw,19px); line-height: 1.65; color: #cfc9b8;">
-        Canchas panorámicas techadas de primer nivel, academia formativa para todas las edades y la mejor comunidad deportiva. Reserva tu cancha en segundos y directo por WhatsApp.
-      </p>
-
-      <!-- Botones CTA Primarios -->
-      <div class="apc-hero-ctas" style="display: flex; gap: 16px; align-items: center; margin-top: 10px; flex-wrap: wrap; justify-content: center;">
-        <a class="apc-btn apc-btn-primary" href="{{waLink}}" target="_blank" rel="noopener" style="padding: 17px 34px; font-size: 16px;">
-          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 1.45.41 2.8 1.12 3.95L1.5 16.5l3.67-1.1A7.44 7.44 0 0 0 9 16.5c4.14 0 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5Z" stroke="#0b1f18" stroke-width="1.3"></path><path d="M6.4 6.6c.2-.6.8-.5 1.2.2.3.5.6.9.4 1.3-.2.4-.6.6-.4 1 .3.7 1 1.4 1.7 1.7.4.2.6-.2 1-.4.4-.2.8.1 1.3.4.7.4.8 1 .2 1.2-1.4.5-3-.2-4.1-1.3-1.1-1.1-1.8-2.7-1.3-4.1Z" fill="#0b1f18"></path></svg>
-          Reservar Cancha
-        </a>
-        <a class="apc-btn apc-btn-ghost" href="#clases" style="padding: 17px 32px; font-size: 16px;">
-          Conocer Clases
-        </a>
+      <!-- Foto en arco (eco del logo) -->
+      <div class="apc-hero-photo" style="position: relative; justify-self: end; width: 100%; max-width: 440px;">
+        <div aria-hidden="true" style="position: absolute; inset: 0; transform: translate(18px, 18px); border: 1px solid rgba(200,162,74,0.55); border-radius: 999px 999px 0 0;"></div>
+        <img src="images/cancha.jpg" alt="Dos jugadores en una cancha panorámica de Ambato Pádel Center" style="position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 52% center; border-radius: 999px 999px 0 0;" />
       </div>
 
     </div>
   </section>
 
-  <!-- 3. SOBRE NOSOTROS Y COMUNIDAD -->
-  <section id="nosotros" style="padding: clamp(64px,9vw,110px) 24px; background: #0e2419;">
-    <div class="apc-about-grid" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center;">
-      
-      <div style="display: flex; flex-direction: column; gap: 22px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Sobre nosotros & Comunidad</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600; line-height: 1.15;">
-          Un club pensado para vivir la verdadera pasión del pádel
-        </h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #cfc9b8;">
+  <!-- 3. NOSOTROS -->
+  <section id="nosotros" class="apc-section" style="background: #0e2419;">
+    <div class="apc-wrap apc-split">
+
+      <div style="display: flex; flex-direction: column; gap: 28px;">
+        <span class="apc-eyebrow">01 · Nosotros</span>
+        <h2 class="apc-h2">Un club para vivir el pádel de verdad.</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 36px; padding-top: 8px;">
+        <p class="apc-lead" style="margin: 0;">
           Ambato Pádel Center es el punto de encuentro deportivo por excelencia en Ambato. Diseñado con estándares internacionales, ofrecemos canchas cuidadas al milímetro, iluminación óptima y un ambiente familiar, seguro y vibrante donde socios y amigos comparten su amor por el deporte.
         </p>
 
-        <!-- Feature Points -->
-        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 6px;">
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(200,162,74,0.15); display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#c8a24a" stroke-width="1.4"></circle><path d="M5.5 9.3 8 11.8l4.5-5.6" stroke="#c8a24a" stroke-width="1.4" stroke-linecap="round"></path></svg>
-            </div>
-            <span style="font-size: 15.5px; color: #e9e4d4; font-weight: 600;">Ambiente familiar, seguro y acogedor para todas las edades.</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(200,162,74,0.15); display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#c8a24a" stroke-width="1.4"></circle><path d="M5.5 9.3 8 11.8l4.5-5.6" stroke="#c8a24a" stroke-width="1.4" stroke-linecap="round"></path></svg>
-            </div>
-            <span style="font-size: 15.5px; color: #e9e4d4; font-weight: 600;">Staff y entrenadores de alto nivel comprometidos con tu progreso.</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(200,162,74,0.15); display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#c8a24a" stroke-width="1.4"></circle><path d="M5.5 9.3 8 11.8l4.5-5.6" stroke="#c8a24a" stroke-width="1.4" stroke-linecap="round"></path></svg>
-            </div>
-            <span style="font-size: 15.5px; color: #e9e4d4; font-weight: 600;">Comunidad activa con torneos, ligas y eventos sociales todo el año.</span>
-          </div>
+        <div>
+          <div class="apc-row"><span class="apc-row-n">01</span><span>Ambiente familiar, seguro y acogedor para todas las edades.</span></div>
+          <div class="apc-row"><span class="apc-row-n">02</span><span>Staff y entrenadores de alto nivel comprometidos con tu progreso.</span></div>
+          <div class="apc-row"><span class="apc-row-n">03</span><span>Comunidad activa con torneos, ligas y eventos sociales todo el año.</span></div>
         </div>
 
-        <!-- Redes Sociales y Comunidad Widget -->
-        <div style="margin-top: 10px; padding: 20px 24px; border-radius: 18px; background: rgba(11,31,24,0.8); border: 1px solid rgba(200,162,74,0.3); display: flex; flex-direction: column; gap: 16px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-            <div style="font-size: 15px; font-weight: 800; color: #f4efe0;">Únete a nuestra comunidad digital</div>
-            <span style="font-size: 12px; color: #c8a24a; font-weight: 700;">#AmbatoPadelCenter</span>
-          </div>
-
-          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: rgba(220,39,67,0.14); border: 1px solid rgba(220,39,67,0.35); color: #f4efe0; font-size: 13.5px; font-weight: 700; transition: transform 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-size: 13px; font-weight: 600; color: #a9a294;">Síguenos · #AmbatoPadelCenter</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 28px;">
+            <a class="apc-social" href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><radialGradient id="igRealGrad" cx="18%" cy="100%" r="125%"><stop offset="0%" stop-color="#FFDD55"/><stop offset="10%" stop-color="#FF543E"/><stop offset="50%" stop-color="#C837AB"/><stop offset="100%" stop-color="#4F5BD5"/></radialGradient></defs>
+                <rect width="24" height="24" rx="6" fill="url(#igRealGrad)"/>
+                <rect x="5.25" y="5.25" width="13.5" height="13.5" rx="3.8" stroke="#ffffff" stroke-width="1.6" fill="none"/>
+                <circle cx="12" cy="12" r="3.2" stroke="#ffffff" stroke-width="1.6" fill="none"/>
+                <circle cx="15.8" cy="8.2" r="0.9" fill="#ffffff"/>
+              </svg>
               Instagram
             </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: rgba(24,119,242,0.14); border: 1px solid rgba(24,119,242,0.35); color: #f4efe0; font-size: 13.5px; font-weight: 700; transition: transform 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            <a class="apc-social" href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+                <path d="M15.5 12.3h-2.5V20h-3.2v-7.7H7.8V9.6h2v-1.7c0-2.2 1.3-3.4 3.3-3.4 1 0 1.9.1 1.9.1v2.3h-1.2c-1.1 0-1.4.7-1.4 1.4v1.3h2.6l-.5 2.7z" fill="#ffffff"/>
+              </svg>
               Facebook
             </a>
-
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: rgba(200,162,74,0.14); border: 1px solid rgba(200,162,74,0.35); color: #f4efe0; font-size: 13.5px; font-weight: 700; transition: transform 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            <a class="apc-social" href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="6" fill="#000000"/>
+                <g transform="translate(1, 0.5)">
+                  <path d="M14.5 7.8c-.8-.4-1.4-1-1.7-1.8V3.5h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.1c1.3.8 2.8 1.3 4.4 1.3V8c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#25F4EE"/>
+                  <path d="M14.8 8c-.8-.4-1.4-1-1.7-1.8V3.7h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.3c1.3.8 2.8 1.3 4.4 1.3V8.2c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#FE2C55"/>
+                  <path d="M14.6 7.9c-.8-.4-1.4-1-1.7-1.8V3.6h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.2c1.3.8 2.8 1.3 4.4 1.3V8.1c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#FFFFFF"/>
+                </g>
+              </svg>
               TikTok
             </a>
           </div>
         </div>
-
       </div>
 
-      <!-- Visual Showcase -->
-      <div class="apc-about-visual" style="position: relative; display: flex; align-items: center; justify-content: center; min-height: 340px;">
-        <div style="position: absolute; width: min(350px, 82vw); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(200,162,74,0.18) 0%, transparent 70%); filter: blur(24px); pointer-events: none;"></div>
-        <div style="position: relative; width: min(310px, 75vw); aspect-ratio: 1; border-radius: 50%; background: #013123; border: 3px solid rgba(200,162,74,0.75); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 45px rgba(200,162,74,0.28);">
-          <img src="./Logo.png" alt="Ambato Pádel Center" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+    </div>
+  </section>
+
+  <!-- 4. INSTALACIONES -->
+  <section id="instalaciones" class="apc-section" style="background: #0b1f18;">
+    <div class="apc-wrap" style="display: flex; flex-direction: column; gap: clamp(56px,8vw,96px);">
+
+      <div class="apc-head">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="apc-eyebrow">02 · Instalaciones</span>
+          <h2 class="apc-h2">Pensadas para tu mejor juego.</h2>
+        </div>
+        <p class="apc-lead" style="margin: 0; max-width: 420px;">Canchas de última tecnología y comodidades integradas para que tu única preocupación sea disfrutar cada punto.</p>
+      </div>
+
+      <!-- Cancha -->
+      <div class="apc-fac-row">
+        <img src="images/cancha.jpg" alt="Cancha panorámica de vidrio" class="apc-photo" style="aspect-ratio: 4 / 3;" />
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span class="apc-kicker">Principal</span>
+          <h3 class="apc-h3">Canchas panorámicas de vidrio</h3>
+          <p class="apc-body">Césped verde monofilamento de última generación y cristales templados panorámicos para un rebote perfecto.</p>
+        </div>
+      </div>
+
+      <!-- Cafetería -->
+      <div class="apc-fac-row rev">
+        <img src="images/cafeteria.jpg" alt="Cafetería y lounge social" class="apc-photo" style="aspect-ratio: 4 / 3;" />
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span class="apc-kicker">Tercer tiempo</span>
+          <h3 class="apc-h3">Cafetería y lounge social</h3>
+          <p class="apc-body">Disfruta de bebidas energéticas, café especial, snacks y una terraza para compartir con tus amigos tras cada partido.</p>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="apc-4col">
+        <div class="apc-cell">
+          <span class="apc-row-n">01</span>
+          <h4 class="apc-h4">Canchas 100% techadas</h4>
+          <p class="apc-small">Juega sin interrupciones con cualquier clima: protegidas contra lluvia, sol intenso y viento, de día y de noche.</p>
+        </div>
+        <div class="apc-cell">
+          <span class="apc-row-n">02</span>
+          <h4 class="apc-h4">Wi-Fi gratis de alta velocidad</h4>
+          <p class="apc-small">Conexión estable en todo el complejo para trabajar o compartir tus mejores jugadas.</p>
+        </div>
+        <div class="apc-cell">
+          <span class="apc-row-n">03</span>
+          <h4 class="apc-h4">Parqueadero privado</h4>
+          <p class="apc-small">Estacionamiento interno vigilado y seguro, exclusivo para socios y visitantes.</p>
+        </div>
+        <div class="apc-cell">
+          <span class="apc-row-n">04</span>
+          <h4 class="apc-h4">Gimnasio &amp; Street FIT</h4>
+          <p class="apc-small">Área de acondicionamiento físico funcional para potenciar tu rendimiento en pista.</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 4. INSTALACIONES Y CANCHAS -->
-  <section id="instalaciones" style="padding: clamp(64px,9vw,110px) 24px; background: #0b1f18;">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 46px;">
-      
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Infraestructura de Clase Mundial</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600;">Instalaciones pensadas para tu mejor juego</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #cfc9b8;">Canchas de última tecnología y comodidades integradas para que tu única preocupación sea disfrutar cada punto.</p>
-      </div>
+  <!-- 5. CLASES Y ACADEMIA (sección clara) -->
+  <section id="clases" class="apc-section apc-light">
+    <div class="apc-wrap" style="display: flex; flex-direction: column; gap: clamp(56px,8vw,96px);">
 
-      <div class="apc-cards-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-        
-        <!-- Canchas Panorámicas -->
-        <div class="apc-card" style="padding: 26px; border-radius: 20px; background: #0e2419; border: 1px solid rgba(200,162,74,0.25); display: flex; flex-direction: column; gap: 16px;">
-          <img src="images/cancha.jpg" alt="Cancha Panorámica" class="apc-facility-img" />
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span style="font-size: 11px; font-weight: 800; color: #c8a24a; text-transform: uppercase; letter-spacing: 0.08em;">Principal</span>
-            </div>
-            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #f4efe0;">Canchas Panorámicas de Vidrio</h3>
-            <p style="margin: 8px 0 0; font-size: 14.5px; line-height: 1.6; color: #cfc9b8;">Césped verde monofilamento de última generación y cristales templados panorámicos para un rebote perfecto.</p>
-          </div>
+      <div class="apc-head">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="apc-eyebrow">03 · Academia</span>
+          <h2 class="apc-h2">Aprende y perfecciona tu juego.</h2>
         </div>
-
-        <!-- Canchas Techadas -->
-        <div class="apc-card" style="padding: 26px; border-radius: 20px; background: #0e2419; border: 1px solid rgba(244,239,224,0.12); display: flex; flex-direction: column; gap: 16px;">
-          <div style="height: 180px; border-radius: 12px; background: linear-gradient(135deg, #17362a 0%, #0e2419 100%); border: 1px solid rgba(244,239,224,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.6" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            <span style="font-size: 13.5px; font-weight: 700; color: #c8a24a;">Clima 100% Controlado</span>
-          </div>
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span style="font-size: 11px; font-weight: 800; color: #a9a294; text-transform: uppercase; letter-spacing: 0.08em;">All-Weather</span>
-            </div>
-            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #f4efe0;">Canchas 100% Techadas</h3>
-            <p style="margin: 8px 0 0; font-size: 14.5px; line-height: 1.6; color: #cfc9b8;">Juega sin interrupciones con cualquier clima: protegidas contra lluvia, sol intenso y viento tanto de día como de noche.</p>
-          </div>
-        </div>
-
-        <!-- Cafetería y Lounge -->
-        <div class="apc-card" style="padding: 26px; border-radius: 20px; background: #0e2419; border: 1px solid rgba(244,239,224,0.12); display: flex; flex-direction: column; gap: 16px;">
-          <img src="images/cafeteria.jpg" alt="Cafetería y Lounge" class="apc-facility-img" />
-          <div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span style="font-size: 11px; font-weight: 800; color: #c8a24a; text-transform: uppercase; letter-spacing: 0.08em;">Tercer Tiempo</span>
-            </div>
-            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #f4efe0;">Cafetería & Lounge Social</h3>
-            <p style="margin: 8px 0 0; font-size: 14.5px; line-height: 1.6; color: #cfc9b8;">Disfruta de bebidas energéticas, café especial, snacks y una terraza para compartir con tus amigos tras cada partido.</p>
-          </div>
-        </div>
-
-        <!-- Wi-Fi Gratis -->
-        <div class="apc-card" style="padding: 24px; border-radius: 18px; background: #0e2419; border: 1px solid rgba(244,239,224,0.1); display: flex; align-items: flex-start; gap: 16px;">
-          <div style="padding: 12px; border-radius: 12px; background: rgba(200,162,74,0.12); color: #c8a24a;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-          </div>
-          <div>
-            <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: #f4efe0;">Wi-Fi Gratis de Alta Velocidad</h4>
-            <p style="margin: 6px 0 0; font-size: 13.5px; color: #cfc9b8; line-height: 1.5;">Conexión estable en todo el complejo para trabajar o compartir tus mejores jugadas.</p>
-          </div>
-        </div>
-
-        <!-- Parqueadero Privado -->
-        <div class="apc-card" style="padding: 24px; border-radius: 18px; background: #0e2419; border: 1px solid rgba(244,239,224,0.1); display: flex; align-items: flex-start; gap: 16px;">
-          <div style="padding: 12px; border-radius: 12px; background: rgba(200,162,74,0.12); color: #c8a24a;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 16V8h4a2 2 0 0 1 0 4H9"></path></svg>
-          </div>
-          <div>
-            <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: #f4efe0;">Parqueadero Privado</h4>
-            <p style="margin: 6px 0 0; font-size: 13.5px; color: #cfc9b8; line-height: 1.5;">Estacionamiento interno vigilado y seguro exclusivo para socios y visitantes.</p>
-          </div>
-        </div>
-
-        <!-- Gimnasio APC x Street FIT -->
-        <div class="apc-card" style="padding: 24px; border-radius: 18px; background: #0e2419; border: 1px solid rgba(245,158,11,0.3); display: flex; align-items: flex-start; gap: 16px;">
-          <div style="padding: 12px; border-radius: 12px; background: rgba(245,158,11,0.15); color: #f59e0b;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8"><path d="M6 16.5l-3 3"></path><path d="M18 7.5l3-3"></path><path d="M12 12l4-4"></path><path d="M8 16l4-4"></path><path d="M14 6l4 4"></path><path d="M4 16l4 4"></path></svg>
-          </div>
-          <div>
-            <div style="font-size: 11px; font-weight: 800; color: #fbbf24; text-transform: uppercase;">Alianza Especial</div>
-            <h4 style="margin: 2px 0 0; font-size: 16px; font-weight: 700; color: #f4efe0;">Gimnasio & Street FIT</h4>
-            <p style="margin: 6px 0 0; font-size: 13.5px; color: #cfc9b8; line-height: 1.5;">Área de acondicionamiento físico funcional para potenciar tu rendimiento en pista.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 5. CLASES Y ACADEMIA -->
-  <section id="clases" style="padding: clamp(64px,9vw,110px) 24px; background: #0e2419;">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px;">
-      
-      <!-- Section Header -->
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Academia y Formación Deportiva</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600; line-height: 1.15;">Aprende y perfecciona tu juego con los mejores</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #cfc9b8;">
-          Programas para todas las edades y todos los niveles: <strong>Principiante, Intermedio y Avanzado</strong>. Modalidades personalizadas, individuales y grupales para maximizar tu nivel.
+        <p class="apc-lead" style="margin: 0; max-width: 440px;">
+          Programas para todas las edades y niveles: <strong>Principiante, Intermedio y Avanzado</strong>. Modalidades personalizadas, individuales y grupales para maximizar tu nivel.
         </p>
       </div>
 
-      <!-- STAFF TÉCNICO: TARJETAS DE ENTRENADORES -->
-      <div style="display: flex; flex-direction: column; gap: 22px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <span style="font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #c8a24a;">Staff Técnico Oficial</span>
-            <h3 class="apc-serif" style="margin: 4px 0 0; font-size: clamp(22px,3vw,30px); font-weight: 600; color: #f4efe0;">Nuestros Entrenadores de Alto Nivel</h3>
-          </div>
-          <span style="font-size: 13.5px; color: #cfc9b8; font-weight: 600;">Metodología argentina · Clases personalizadas y grupales</span>
+      <!-- Entrenadores -->
+      <div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; padding-bottom: 18px; border-bottom: 2px solid #0b1f18;">
+          <h3 class="apc-h3" style="font-size: clamp(24px,3vw,32px);">Nuestros entrenadores</h3>
+          <span class="apc-muted" style="font-size: 14px; font-weight: 600;">Metodología argentina · Clases personalizadas y grupales</span>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
-          
-          <!-- Tarjeta 1: Mateo Villamil -->
-          <div class="apc-card" style="border-radius: 22px; background: linear-gradient(180deg, #12291f 0%, #0b1f18 100%); border: 1.5px solid rgba(200,162,74,0.35); padding: clamp(24px,3.5vw,32px); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; box-shadow: 0 16px 36px rgba(0,0,0,0.3);">
-            <div style="display: flex; flex-direction: column; gap: 18px;">
-              
-              <!-- Header Entrenador -->
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px;">
-                <div style="display: flex; align-items: center; gap: 14px;">
-                  <div style="width: 56px; height: 56px; border-radius: 50%; background: #17362a; border: 1.5px solid #c8a24a; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: #f4efe0; box-shadow: 0 0 16px rgba(200,162,74,0.25);">
-                    MV
-                  </div>
-                  <div>
-                    <h4 class="apc-serif" style="margin: 0; font-size: 22px; font-weight: 700; color: #f4efe0;">Mateo Villamil</h4>
-                    <span style="font-size: 13px; font-weight: 600; color: #c8a24a;">Entrenador de Pádel</span>
-                  </div>
-                </div>
-                <span style="padding: 5px 12px; border-radius: 999px; background: rgba(200,162,74,0.14); border: 1px solid rgba(200,162,74,0.35); font-size: 11.5px; font-weight: 800; color: #f4efe0; white-space: nowrap;">
-                  🇦🇷 Argentina
-                </span>
-              </div>
+        <div class="apc-trainers">
 
-              <!-- Experiencia -->
-              <div style="padding: 12px 14px; border-radius: 12px; background: rgba(18,41,31,0.7); border: 1px solid rgba(244,239,224,0.08); font-size: 13.5px; color: #e9e4d4; line-height: 1.5;">
-                <strong style="color: #c8a24a;">Experiencia:</strong> Más de 10 años como jugador y trayectoria formando a niños, adolescentes y adultos.
+          <div class="apc-trainer">
+            <div>
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                <h4 class="apc-h3" style="font-size: 30px;">Mateo Villamil</h4>
+                <span class="apc-muted" style="font-size: 13px; font-weight: 700;">🇦🇷 Argentina</span>
               </div>
-
-              <!-- Títulos y Formación -->
-              <div style="display: flex; flex-direction: column; gap: 8px;">
-                <span style="font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #c8a24a;">Títulos y Formación</span>
-                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; color: #cfc9b8;">
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Profesor de Educación Física.
-                  </div>
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Campeón Argentino FAP 2017.
-                  </div>
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Certificado Nivel 1 y 2 por la Federación Argentina de Pádel (FAP).
-                  </div>
-                </div>
-              </div>
-
-              <!-- Enfoque -->
-              <div style="padding: 12px 14px; border-radius: 12px; background: rgba(200,162,74,0.08); border-left: 3px solid #c8a24a; font-size: 13px; color: #e9e4d4; line-height: 1.5;">
-                <strong style="color: #f4efe0;">Enfoque:</strong> Combina técnica, preparación física y enfoque pedagógico para desarrollar jugadores dentro y fuera de la cancha.
-              </div>
-
+              <div class="apc-gold-dark" style="font-size: 14px; font-weight: 700; margin-top: 4px;">Entrenador de Pádel</div>
             </div>
-
-            <a class="apc-btn apc-btn-primary" href="{{waLinkClases}}" target="_blank" rel="noopener" style="padding: 12px; font-size: 14px; width: 100%;">
-              Agendar con Mateo Villamil
-            </a>
+            <p class="apc-body" style="margin: 0;"><strong>Experiencia:</strong> más de 10 años como jugador y trayectoria formando a niños, adolescentes y adultos.</p>
+            <div>
+              <span class="apc-kicker apc-gold-dark">Títulos y formación</span>
+              <ul class="apc-dash">
+                <li>Profesor de Educación Física.</li>
+                <li>Campeón Argentino FAP 2017.</li>
+                <li>Certificado Nivel 1 y 2 por la Federación Argentina de Pádel (FAP).</li>
+              </ul>
+            </div>
+            <p class="apc-body" style="margin: 0; padding-left: 16px; border-left: 3px solid #c8a24a;"><strong>Enfoque:</strong> combina técnica, preparación física y enfoque pedagógico para desarrollar jugadores dentro y fuera de la cancha.</p>
+            <a class="apc-btn apc-btn-dark" href="{{waLinkClases}}" target="_blank" rel="noopener" style="align-self: flex-start;">Agendar con Mateo →</a>
           </div>
 
-          <!-- Tarjeta 2: Matías Vendrell -->
-          <div class="apc-card" style="border-radius: 22px; background: linear-gradient(180deg, #12291f 0%, #0b1f18 100%); border: 1.5px solid rgba(200,162,74,0.35); padding: clamp(24px,3.5vw,32px); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; box-shadow: 0 16px 36px rgba(0,0,0,0.3);">
-            <div style="display: flex; flex-direction: column; gap: 18px;">
-              
-              <!-- Header Entrenador -->
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px;">
-                <div style="display: flex; align-items: center; gap: 14px;">
-                  <div style="width: 56px; height: 56px; border-radius: 50%; background: #17362a; border: 1.5px solid #c8a24a; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: #f4efe0; box-shadow: 0 0 16px rgba(200,162,74,0.25);">
-                    MV
-                  </div>
-                  <div>
-                    <h4 class="apc-serif" style="margin: 0; font-size: 22px; font-weight: 700; color: #f4efe0;">Matías Vendrell</h4>
-                    <span style="font-size: 13px; font-weight: 600; color: #c8a24a;">Entrenador & Personal Trainer</span>
-                  </div>
-                </div>
-                <span style="padding: 5px 12px; border-radius: 999px; background: rgba(200,162,74,0.14); border: 1px solid rgba(200,162,74,0.35); font-size: 11.5px; font-weight: 800; color: #f4efe0; white-space: nowrap;">
-                  🇦🇷 Argentina
-                </span>
+          <div class="apc-trainer">
+            <div>
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                <h4 class="apc-h3" style="font-size: 30px;">Matías Vendrell</h4>
+                <span class="apc-muted" style="font-size: 13px; font-weight: 700;">🇦🇷 Argentina</span>
               </div>
-
-              <!-- Experiencia -->
-              <div style="padding: 12px 14px; border-radius: 12px; background: rgba(18,41,31,0.7); border: 1px solid rgba(244,239,224,0.08); font-size: 13.5px; color: #e9e4d4; line-height: 1.5;">
-                <strong style="color: #c8a24a;">Experiencia:</strong> Más de 10 años como jugador y 5 años como profesor de pádel.
-              </div>
-
-              <!-- Especialidades -->
-              <div style="display: flex; flex-direction: column; gap: 8px;">
-                <span style="font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #c8a24a;">Especialidades</span>
-                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; color: #cfc9b8;">
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Entrenador de pádel formativo y competitivo.
-                  </div>
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Personal Trainer certificado.
-                  </div>
-                  <div style="display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="color: #c8a24a; font-weight: 700;">✓</span> Especialista en bienestar y psicología deportiva.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Enfoque -->
-              <div style="padding: 12px 14px; border-radius: 12px; background: rgba(200,162,74,0.08); border-left: 3px solid #c8a24a; font-size: 13px; color: #e9e4d4; line-height: 1.5;">
-                <strong style="color: #f4efe0;">Enfoque:</strong> Acompaña a mejorar la técnica, fortalecer el físico y desarrollar una mentalidad sólida mediante experiencia en competencia, entrenamiento personalizado y preparación mental.
-              </div>
-
+              <div class="apc-gold-dark" style="font-size: 14px; font-weight: 700; margin-top: 4px;">Entrenador &amp; Personal Trainer</div>
             </div>
-
-            <a class="apc-btn apc-btn-primary" href="{{waLinkClases}}" target="_blank" rel="noopener" style="padding: 12px; font-size: 14px; width: 100%;">
-              Agendar con Matías Vendrell
-            </a>
+            <p class="apc-body" style="margin: 0;"><strong>Experiencia:</strong> más de 10 años como jugador y 5 años como profesor de pádel.</p>
+            <div>
+              <span class="apc-kicker apc-gold-dark">Especialidades</span>
+              <ul class="apc-dash">
+                <li>Entrenador de pádel formativo y competitivo.</li>
+                <li>Personal Trainer certificado.</li>
+                <li>Especialista en bienestar y psicología deportiva.</li>
+              </ul>
+            </div>
+            <p class="apc-body" style="margin: 0; padding-left: 16px; border-left: 3px solid #c8a24a;"><strong>Enfoque:</strong> acompaña a mejorar la técnica, fortalecer el físico y desarrollar una mentalidad sólida mediante experiencia en competencia, entrenamiento personalizado y preparación mental.</p>
+            <a class="apc-btn apc-btn-dark" href="{{waLinkClases}}" target="_blank" rel="noopener" style="align-self: flex-start;">Agendar con Matías →</a>
           </div>
 
         </div>
       </div>
 
-      <!-- 1. CLASES DE PÁDEL (GENERAL) -->
-      <div id="clases-general" class="apc-card" style="border-radius: 22px; border: 1px solid rgba(200,162,74,0.3); background: linear-gradient(180deg, #10291e 0%, #0b1f18 100%); padding: clamp(24px,4vw,38px); display: flex; flex-direction: column; gap: 26px; box-shadow: 0 16px 36px rgba(0,0,0,0.25);">
-        
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px;">
-          <div style="display: flex; flex-direction: column; gap: 8px; max-width: 620px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: #c8a24a; color: #0b1f18;">1. Clases Pádel General</span>
-              <span style="font-size: 13px; font-weight: 600; color: #cfc9b8;">Adultos y jóvenes · Todos los niveles</span>
-            </div>
-            <h3 class="apc-serif" style="margin: 0; font-size: clamp(24px,3.2vw,32px); font-weight: 600; color: #f4efe0;">Paquetes de Entrenamiento de Pádel</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #cfc9b8;">Mejora tu bandeja, víbora, volea y posicionamiento en pista con nuestros planes estructurados según el número de participantes.</p>
-          </div>
+      <!-- Programas y precios -->
+      <div style="display: flex; flex-direction: column;">
 
-          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            <div style="padding: 12px 18px; border-radius: 14px; background: rgba(18,41,31,0.85); border: 1px solid rgba(244,239,224,0.12); display: flex; align-items: center; gap: 12px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <div>
-                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #a9a294; font-weight: 700;">Duración por clase</div>
-                <div style="font-size: 14.5px; font-weight: 700; color: #f4efe0;">1 h y 15 min</div>
-              </div>
-            </div>
-            <div style="padding: 12px 18px; border-radius: 14px; background: rgba(18,41,31,0.85); border: 1px solid rgba(244,239,224,0.12); display: flex; align-items: center; gap: 12px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
-              <div>
-                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #a9a294; font-weight: 700;">Horarios de turnos</div>
-                <div style="font-size: 14.5px; font-weight: 700; color: #f4efe0;">06:00 am <span style="font-size: 12px; color: #a9a294; font-weight: 500;">— 18:15 pm (último)</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="apc-pricing-wrap" style="border-radius: 16px; border: 1px solid rgba(244,239,224,0.12); background: rgba(11,31,24,0.75); overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; min-width: 620px; text-align: left;">
-            <thead>
-              <tr style="background: rgba(200,162,74,0.08);">
-                <th style="padding: 16px 22px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.12);">Paquete / Modalidad</th>
-                <th style="padding: 16px 20px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.12); text-align: center;">1 Día</th>
-                <th style="padding: 16px 20px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.12); text-align: center;">4 Días</th>
-                <th style="padding: 16px 20px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.12); text-align: center;">8 Días</th>
-                <th style="padding: 16px 20px; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.12); text-align: center;">12 Días</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding: 16px 22px; font-size: 14.5px; font-weight: 700; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">
-                  1 Persona (Individual)
-                </td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$30,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$80,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$145,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 800; text-align: center; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.08); background: rgba(200,162,74,0.06);">$200,00</td>
-              </tr>
-              <tr>
-                <td style="padding: 16px 22px; font-size: 14.5px; font-weight: 700; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">
-                  2 Personas (Pareja)
-                </td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$20,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$60,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.08);">$100,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 800; text-align: center; color: #c8a24a; border-bottom: 1px solid rgba(244,239,224,0.08); background: rgba(200,162,74,0.06);">$130,00</td>
-              </tr>
-              <tr>
-                <td style="padding: 16px 22px; font-size: 14.5px; font-weight: 700; color: #f4efe0;">
-                  3 o 4 Personas (Grupal)
-                </td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0;">$15,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0;">$50,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 700; text-align: center; color: #f4efe0;">$80,00</td>
-                <td style="padding: 16px 20px; font-size: 16px; font-weight: 800; text-align: center; color: #c8a24a; background: rgba(200,162,74,0.06);">$100,00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-          <p style="margin: 0; font-size: 13.5px; color: #a9a294;">* Tarifas aplican por persona. Horarios sujetos a reserva y disponibilidad de cancha.</p>
-          <a class="apc-btn apc-btn-primary" href="{{waLinkClases}}" target="_blank" rel="noopener">
-            Consultar por Clases
-          </a>
-        </div>
-      </div>
-
-      <!-- 2 & 3: GRID PARA NIÑOS Y APC X STREET FIT -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
-        
-        <!-- 2. PAQUETES NIÑOS -->
-        <div id="clases-ninos" class="apc-card" style="border-radius: 22px; border: 1px solid rgba(110,231,183,0.35); background: linear-gradient(180deg, #112d22 0%, #0b1f18 100%); padding: clamp(24px,3.5vw,34px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; box-shadow: 0 16px 36px rgba(0,0,0,0.25);">
+        <!-- 01 Pádel general -->
+        <div id="clases-general" class="apc-prog">
           <div style="display: flex; flex-direction: column; gap: 18px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-                <span style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: #6ee7b7; color: #064e3b;">2. Academia Infantil</span>
-                <span style="font-size: 12.5px; font-weight: 700; color: #6ee7b7;">Edades 6 a 14 años</span>
-              </div>
-              <h3 class="apc-serif" style="margin: 0; font-size: clamp(22px,2.6vw,28px); font-weight: 600; color: #f4efe0;">Paquetes de Entrenamiento de Pádel (Niños)</h3>
-              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #cfc9b8;">Formación deportiva integral para niños y jóvenes con metodología pedagógica enfocada en diversión y técnica.</p>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: 14px; background: rgba(14,36,25,0.7); border: 1px solid rgba(244,239,224,0.08);">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                <span style="font-size: 14px; color: #f4efe0;"><strong>Edades:</strong> Niños de 6 a 9 años / Niños de 10 a 14 años</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span style="font-size: 14px; color: #f4efe0;"><strong>Horario:</strong> Turno de 15:30 a 17:00</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <span style="font-size: 14px; color: #f4efe0;"><strong>Duración por clase:</strong> 1 h 30 min</span>
-              </div>
-            </div>
-
-            <div style="font-size: 12.8px; line-height: 1.5; color: #a7f3d0; background: rgba(110,231,183,0.08); padding: 10px 14px; border-radius: 10px; border-left: 3px solid #6ee7b7;">
-              ★ <strong>Metodología integral:</strong> Incluye trabajo físico, psicológico, técnico y táctico en cada sesión.
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div style="padding: 16px; border-radius: 14px; background: rgba(18,41,31,0.9); border: 1px solid rgba(110,231,183,0.25); text-align: center;">
-                <div style="font-size: 11.5px; font-weight: 700; color: #a9a294; text-transform: uppercase;">8 Días / mes</div>
-                <div style="font-size: 28px; font-weight: 800; color: #6ee7b7; margin: 4px 0;">$64</div>
-                <div style="font-size: 11.5px; color: #a9a294;">Paquete mensual</div>
-              </div>
-              <div style="padding: 16px; border-radius: 14px; background: rgba(18,41,31,0.9); border: 1px solid rgba(110,231,183,0.4); text-align: center; position: relative;">
-                <span style="position: absolute; top: -9px; right: 10px; background: #6ee7b7; color: #064e3b; font-size: 9.5px; font-weight: 800; padding: 2px 7px; border-radius: 999px;">DESTACADO</span>
-                <div style="font-size: 11.5px; font-weight: 700; color: #a9a294; text-transform: uppercase;">12 Días / mes</div>
-                <div style="font-size: 28px; font-weight: 800; color: #f4efe0; margin: 4px 0;">$90</div>
-                <div style="font-size: 11.5px; color: #a9a294;">Paquete mensual</div>
-              </div>
-            </div>
+            <span class="apc-kicker apc-gold-dark">01 · Adultos y jóvenes · Todos los niveles</span>
+            <h3 class="apc-h3">Paquetes de entrenamiento de pádel</h3>
+            <p class="apc-body">Mejora tu bandeja, víbora, volea y posicionamiento en pista con planes estructurados según el número de participantes.</p>
+            <dl class="apc-meta">
+              <div><dt>Duración por clase</dt><dd>1 h y 15 min</dd></div>
+              <div><dt>Turnos</dt><dd>06:00 am — 18:15 pm (último)</dd></div>
+            </dl>
           </div>
-
-          <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 10px; border-top: 1px solid rgba(244,239,224,0.08);">
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px;">
-              <span style="color: #a9a294;">Contacto / WhatsApp:</span>
-              <strong style="color: #6ee7b7;">+593 93 908 4371</strong>
-            </div>
-            <a class="apc-btn" href="{{waLinkKids}}" target="_blank" rel="noopener" style="background: #6ee7b7; color: #064e3b; font-weight: 800;">
-              Inscribir en Pádel Niños
-            </a>
-          </div>
-        </div>
-
-        <!-- 3. APC X STREET FIT -->
-        <div id="clases-streetfit" class="apc-card" style="border-radius: 22px; border: 1px solid rgba(245,158,11,0.35); background: linear-gradient(180deg, #231b10 0%, #0b1f18 100%); padding: clamp(24px,3.5vw,34px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; box-shadow: 0 16px 36px rgba(0,0,0,0.25);">
-          <div style="display: flex; flex-direction: column; gap: 18px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-                <span style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: #f59e0b; color: #451a03;">3. Rendimiento Físico</span>
-                <span style="font-size: 12.5px; font-weight: 700; color: #fbbf24;">APC × Street FIT</span>
-              </div>
-              <h3 class="apc-serif" style="margin: 0; font-size: clamp(22px,2.6vw,28px); font-weight: 600; color: #f4efe0;">Clases de Entrenamiento Físico</h3>
-              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #cfc9b8;">Potencia tu agilidad de piernas, fuerza explosiva, velocidad de reacción y resistencia para destacar en cada partido.</p>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; background: rgba(36,27,15,0.7); border: 1px solid rgba(245,158,11,0.2);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <div>
-                <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706; font-weight: 700;">Duración por sesión</span>
-                <div style="font-size: 14.5px; font-weight: 700; color: #f4efe0;">1 hora completa</div>
-              </div>
-            </div>
-
-            <div class="apc-pricing-wrap" style="border-radius: 14px; border: 1px solid rgba(244,239,224,0.1); background: rgba(14,24,19,0.85); overflow-x: auto;">
-              <table style="width: 100%; border-collapse: collapse; min-width: 310px; text-align: left;">
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="overflow-x: auto;">
+              <table class="apc-ptable">
                 <thead>
-                  <tr style="background: rgba(245,158,11,0.1);">
-                    <th style="padding: 12px 14px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fbbf24; border-bottom: 1px solid rgba(244,239,224,0.1);">Plan</th>
-                    <th style="padding: 12px 10px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fbbf24; border-bottom: 1px solid rgba(244,239,224,0.1); text-align: center;">Todos los Días</th>
-                    <th style="padding: 12px 10px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fbbf24; border-bottom: 1px solid rgba(244,239,224,0.1); text-align: center;">8 días / Mes</th>
-                    <th style="padding: 12px 10px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fbbf24; border-bottom: 1px solid rgba(244,239,224,0.1); text-align: center;">12 días / Mes</th>
-                  </tr>
+                  <tr><th>Modalidad</th><th>1 día</th><th>4 días</th><th>8 días</th><th class="hl">12 días</th></tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td style="padding: 13px 14px; font-size: 13px; font-weight: 700; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.06);">
-                      Uno a uno (1:1)
-                    </td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 800; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.06);">$250</td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 700; text-align: center; color: #f4efe0; border-bottom: 1px solid rgba(244,239,224,0.06);">$125</td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 700; text-align: center; color: #fbbf24; border-bottom: 1px solid rgba(244,239,224,0.06); background: rgba(245,158,11,0.06);">$175</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 13px 14px; font-size: 13px; font-weight: 700; color: #f4efe0;">
-                      Personalizadas<br><span style="font-size: 11px; font-weight: 400; color: #a9a294;">(hasta 5 por entrenador)</span>
-                    </td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 800; text-align: center; color: #f4efe0;">$130</td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 700; text-align: center; color: #f4efe0;">$80</td>
-                    <td style="padding: 13px 10px; font-size: 15px; font-weight: 700; text-align: center; color: #fbbf24; background: rgba(245,158,11,0.06);">$105</td>
-                  </tr>
+                  <tr><td>1 persona<span>Individual</span></td><td>$30,00</td><td>$80,00</td><td>$145,00</td><td class="hl">$200,00</td></tr>
+                  <tr><td>2 personas<span>Pareja</span></td><td>$20,00</td><td>$60,00</td><td>$100,00</td><td class="hl">$130,00</td></tr>
+                  <tr><td>3 o 4 personas<span>Grupal</span></td><td>$15,00</td><td>$50,00</td><td>$80,00</td><td class="hl">$100,00</td></tr>
                 </tbody>
               </table>
             </div>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 10px; border-top: 1px solid rgba(244,239,224,0.08);">
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px;">
-              <span style="color: #a9a294;">Reservas / WhatsApp:</span>
-              <strong style="color: #fbbf24;">+593 96 371 4090</strong>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+              <p class="apc-muted" style="margin: 0; font-size: 13px; max-width: 340px;">* Tarifas por persona. Horarios sujetos a reserva y disponibilidad de cancha.</p>
+              <a class="apc-btn apc-btn-dark" href="{{waLinkClases}}" target="_blank" rel="noopener">Consultar por clases</a>
             </div>
-            <a class="apc-btn" href="{{waLinkStreetFit}}" target="_blank" rel="noopener" style="background: #f59e0b; color: #451a03; font-weight: 800;">
-              Reservar APC x Street FIT
-            </a>
+          </div>
+        </div>
+
+        <!-- 02 Niños -->
+        <div id="clases-ninos" class="apc-prog">
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <span class="apc-kicker apc-gold-dark">02 · Academia infantil · 6 a 14 años</span>
+            <h3 class="apc-h3">Paquetes de entrenamiento para niños</h3>
+            <p class="apc-body">Formación deportiva integral con metodología pedagógica enfocada en diversión y técnica. Incluye trabajo físico, psicológico, técnico y táctico en cada sesión.</p>
+            <dl class="apc-meta">
+              <div><dt>Edades</dt><dd>6 a 9 años · 10 a 14 años</dd></div>
+              <div><dt>Horario</dt><dd>Turno de 15:30 a 17:00</dd></div>
+              <div><dt>Duración por clase</dt><dd>1 h 30 min</dd></div>
+            </dl>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+              <table class="apc-ptable">
+                <thead>
+                  <tr><th>Paquete mensual</th><th>Precio</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>8 días / mes</td><td>$64</td></tr>
+                  <tr><td>12 días / mes<span>Destacado</span></td><td class="hl">$90</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+              <span class="apc-muted" style="font-size: 14px;">WhatsApp: <strong style="color: #0b1f18;">+593 93 908 4371</strong></span>
+              <a class="apc-btn apc-btn-dark" href="{{waLinkKids}}" target="_blank" rel="noopener">Inscribir en pádel niños</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 Street FIT -->
+        <div id="clases-streetfit" class="apc-prog" style="border-bottom: 2px solid #0b1f18;">
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <span class="apc-kicker apc-gold-dark">03 · Rendimiento físico · APC × Street FIT</span>
+            <h3 class="apc-h3">Clases de entrenamiento físico</h3>
+            <p class="apc-body">Potencia tu agilidad de piernas, fuerza explosiva, velocidad de reacción y resistencia para destacar en cada partido.</p>
+            <dl class="apc-meta">
+              <div><dt>Duración por sesión</dt><dd>1 hora completa</dd></div>
+            </dl>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="overflow-x: auto;">
+              <table class="apc-ptable">
+                <thead>
+                  <tr><th>Plan</th><th>Todos los días</th><th>8 días / mes</th><th class="hl">12 días / mes</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Uno a uno<span>1:1</span></td><td>$250</td><td>$125</td><td class="hl">$175</td></tr>
+                  <tr><td>Personalizadas<span>Hasta 5 por entrenador</span></td><td>$130</td><td>$80</td><td class="hl">$105</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+              <span class="apc-muted" style="font-size: 14px;">WhatsApp: <strong style="color: #0b1f18;">+593 96 371 4090</strong></span>
+              <a class="apc-btn apc-btn-dark" href="{{waLinkStreetFit}}" target="_blank" rel="noopener">Reservar APC × Street FIT</a>
+            </div>
           </div>
         </div>
 
@@ -668,228 +583,141 @@
     </div>
   </section>
 
-  <!-- 6. TORNEOS Y EVENTOS (Banner y Tarjeta Dinámica Promocional) -->
-  <section id="torneos" style="padding: clamp(64px,9vw,110px) 24px; background: #0b1f18;">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px;">
-      
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Competición y Eventos</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600;">Vive la emoción del circuito de torneos</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #cfc9b8;">Torneos oficiales de fin de semana, ligas nocturnas y clínicas competitivas para medir tu nivel.</p>
+  <!-- 6. TORNEOS -->
+  <section id="torneos" class="apc-section" style="background: #0b1f18;">
+    <div class="apc-wrap" style="display: flex; flex-direction: column; gap: clamp(40px,6vw,64px);">
+
+      <div class="apc-head">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="apc-eyebrow">04 · Torneos</span>
+          <h2 class="apc-h2">Vive la emoción de competir.</h2>
+        </div>
+        <p class="apc-lead" style="margin: 0; max-width: 420px;">Torneos oficiales de fin de semana, ligas nocturnas y clínicas competitivas para medir tu nivel.</p>
       </div>
 
-      <!-- Tarjeta Dinámica Próximo Torneo -->
-      <div class="apc-card" style="border-radius: 26px; background: linear-gradient(135deg, rgba(18,41,31,0.92) 0%, rgba(14,36,25,0.95) 100%), url('images/torneo.jpg') center/cover no-repeat; border: 1.5px solid rgba(200,162,74,0.45); padding: clamp(32px,5vw,54px); display: flex; flex-direction: column; gap: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.45); position: relative; overflow: hidden;">
-        
-        <div style="position: absolute; top: -50px; right: -50px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(200,162,74,0.18), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
-
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px;">
-          <div>
-            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: #c8a24a; color: #0b1f18; font-weight: 800; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
-              🏆 PRÓXIMO TORNEO OFICIAL
-            </div>
-            <h3 class="apc-serif" style="margin: 0; font-size: clamp(28px,4.5vw,40px); font-weight: 700; color: #f4efe0; line-height: 1.15;">
-              Torneo Abierto de Pádel APC 2026
-            </h3>
-            <p style="margin: 8px 0 0; font-size: 16px; color: #e9e4d4; max-width: 600px; line-height: 1.6;">
-              ¡El torneo más esperado de la región! Demuestra tu nivel en la pista, compite por grandes premios y disfruta del mejor ambiente competitivo en Ambato.
-            </p>
-          </div>
-
-          <a class="apc-btn apc-btn-primary" href="{{waLinkTorneo}}" target="_blank" rel="noopener" style="padding: 18px 36px; font-size: 16px;">
-            Inscribirme al Torneo
-          </a>
+      <div>
+        <div style="position: relative;">
+          <img src="images/torneo.jpg" alt="Torneo oficial de pádel" class="apc-photo" style="aspect-ratio: 21 / 9; min-height: 240px;" />
+          <span style="position: absolute; top: 0; left: 0; padding: 10px 18px; background: #c8a24a; color: #0b1f18; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 6px 0 6px 0;">Próximo torneo oficial</span>
         </div>
 
-        <!-- Ficha Técnica del Torneo: Fecha, Categorías, Premios, Inscripción -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding-top: 10px;">
-          
-          <div style="padding: 18px; border-radius: 16px; background: rgba(11,31,24,0.75); border: 1px solid rgba(244,239,224,0.12);">
-            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #c8a24a; font-weight: 800;">📅 Fecha del Evento</div>
-            <div style="font-size: 16px; font-weight: 700; color: #f4efe0; margin-top: 4px;">17 al 19 de Octubre 2026</div>
-            <div style="font-size: 12.5px; color: #a9a294; margin-top: 2px;">Viernes a Domingo</div>
+        <div class="apc-tour-head">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <h3 class="apc-h3" style="font-size: clamp(30px,4.6vw,56px); line-height: 1;">Torneo Abierto de Pádel APC 2026</h3>
+            <p class="apc-body" style="max-width: 560px;">El torneo más esperado de la región. Demuestra tu nivel en la pista, compite por grandes premios y disfruta del mejor ambiente competitivo en Ambato.</p>
           </div>
-
-          <div style="padding: 18px; border-radius: 16px; background: rgba(11,31,24,0.75); border: 1px solid rgba(244,239,224,0.12);">
-            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #c8a24a; font-weight: 800;">🎾 Categorías</div>
-            <div style="font-size: 15px; font-weight: 700; color: #f4efe0; margin-top: 4px;">2da, 3ra, 4ta, 5ta Masculina</div>
-            <div style="font-size: 12.5px; color: #a9a294; margin-top: 2px;">3ra y 4ta Femenina · Mixtos</div>
-          </div>
-
-          <div style="padding: 18px; border-radius: 16px; background: rgba(11,31,24,0.75); border: 1px solid rgba(244,239,224,0.12);">
-            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #c8a24a; font-weight: 800;">🎁 Premios & Trofeos</div>
-            <div style="font-size: 16px; font-weight: 800; color: #c8a24a; margin-top: 4px;">$1.500 en Premios</div>
-            <div style="font-size: 12.5px; color: #a9a294; margin-top: 2px;">Trofeos + Palas Pro + Accesorios</div>
-          </div>
-
-          <div style="padding: 18px; border-radius: 16px; background: rgba(11,31,24,0.75); border: 1px solid rgba(244,239,224,0.12);">
-            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #c8a24a; font-weight: 800;">📝 Inscripciones</div>
-            <div style="font-size: 16px; font-weight: 700; color: #22c55e; margin-top: 4px;">Cupos Disponibles</div>
-            <div style="font-size: 12.5px; color: #a9a294; margin-top: 2px;">Reserva tu dupla por WhatsApp</div>
-          </div>
-
+          <a class="apc-btn apc-btn-primary" href="{{waLinkTorneo}}" target="_blank" rel="noopener" style="padding: 18px 34px; font-size: 16px;">Inscribirme al torneo</a>
         </div>
 
+        <div class="apc-4col" style="margin-top: 8px;">
+          <div class="apc-cell">
+            <span class="apc-kicker">Fecha</span>
+            <div class="apc-fact">17 al 19 de octubre 2026</div>
+            <div class="apc-small">Viernes a domingo</div>
+          </div>
+          <div class="apc-cell">
+            <span class="apc-kicker">Categorías</span>
+            <div class="apc-fact">2da, 3ra, 4ta, 5ta masculina</div>
+            <div class="apc-small">3ra y 4ta femenina · Mixtos</div>
+          </div>
+          <div class="apc-cell">
+            <span class="apc-kicker">Premios</span>
+            <div class="apc-fact" style="color: #c8a24a;">$1.500 en premios</div>
+            <div class="apc-small">Trofeos + palas pro + accesorios</div>
+          </div>
+          <div class="apc-cell">
+            <span class="apc-kicker">Inscripciones</span>
+            <div class="apc-fact"><span style="color: #22c55e;">●</span> Cupos disponibles</div>
+            <div class="apc-small">Reserva tu dupla por WhatsApp</div>
+          </div>
+        </div>
       </div>
 
-      <p style="margin: 0; font-size: 14px; color: #a9a294; text-align: center;">
-        ¿Deseas organizar un torneo corporativo o evento privado en APC? <a href="{{waLink}}" target="_blank" rel="noopener" style="color: #c8a24a; font-weight: 700;">Contáctanos por WhatsApp</a>.
+      <p style="margin: 0; font-size: 15px; color: #a9a294;">
+        ¿Quieres organizar un torneo corporativo o evento privado en APC? <a href="{{waLink}}" target="_blank" rel="noopener" style="color: #c8a24a; font-weight: 700; border-bottom: 1px solid rgba(200,162,74,0.6);">Escríbenos por WhatsApp</a>.
       </p>
 
     </div>
   </section>
 
-  <!-- 7. GALERÍA (Carrusel Deslizable / Slider Dinámico) -->
-  <section id="galeria" style="padding: clamp(64px,9vw,110px) 24px; background: #0e2419;">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px;">
-      
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Galería de Fotos</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600;">Así se vive Ambato Pádel Center</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #cfc9b8;">Instantes de juego, entrenamientos, comunidad y la energía que nos hace únicos en cada jornada.</p>
+  <!-- 7. GALERÍA -->
+  <section id="galeria" class="apc-section" style="background: #0e2419;">
+    <div class="apc-wrap" style="display: flex; flex-direction: column; gap: clamp(40px,6vw,64px);">
+
+      <div class="apc-head">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="apc-eyebrow">05 · Galería</span>
+          <h2 class="apc-h2">Así se vive Ambato Pádel Center.</h2>
+        </div>
+        <p class="apc-lead" style="margin: 0; max-width: 420px;">Instantes de juego, entrenamientos y comunidad en cada jornada.</p>
       </div>
 
-      <!-- Slider Container -->
-      <div style="position: relative; border-radius: 24px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.4);">
-        
-        <!-- Slide 0: Canchas Panorámicas -->
-        <div style="display: {{gallerySlide0}}; position: relative; width: 100%; aspect-ratio: 16/9; min-height: 380px;">
-          <img src="images/cancha.jpg" alt="Canchas panorámicas de pádel" style="width: 100%; height: 100%; object-fit: cover;" />
-          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(11,31,24,0.92) 100%);"></div>
-          <div style="position: absolute; bottom: 28px; left: 28px; right: 28px;">
-            <span style="font-size: 11.5px; font-weight: 800; color: #c8a24a; text-transform: uppercase; letter-spacing: 0.1em;">Canchas Oficiales</span>
-            <h3 class="apc-serif" style="margin: 4px 0 0; font-size: clamp(20px,3.2vw,30px); font-weight: 600; color: #f4efe0;">Canchas panorámicas de cristal y césped profesional</h3>
-            <p style="margin: 4px 0 0; font-size: 14.5px; color: #cfc9b8;">Diseñadas para maximizar visibilidad, rapidez y confort de juego.</p>
-          </div>
-        </div>
-
-        <!-- Slide 1: Cafetería & Lounge -->
-        <div style="display: {{gallerySlide1}}; position: relative; width: 100%; aspect-ratio: 16/9; min-height: 380px;">
-          <img src="images/cafeteria.jpg" alt="Cafetería y lounge del club" style="width: 100%; height: 100%; object-fit: cover;" />
-          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(11,31,24,0.92) 100%);"></div>
-          <div style="position: absolute; bottom: 28px; left: 28px; right: 28px;">
-            <span style="font-size: 11.5px; font-weight: 800; color: #c8a24a; text-transform: uppercase; letter-spacing: 0.1em;">Zona Social</span>
-            <h3 class="apc-serif" style="margin: 4px 0 0; font-size: clamp(20px,3.2vw,30px); font-weight: 600; color: #f4efe0;">Cafetería & Terraza Lounge para el tercer tiempo</h3>
-            <p style="margin: 4px 0 0; font-size: 14.5px; color: #cfc9b8;">El lugar perfecto para relajarte, conversar y brindar tras el partido.</p>
-          </div>
-        </div>
-
-        <!-- Slide 2: Torneos y Competencia -->
-        <div style="display: {{gallerySlide2}}; position: relative; width: 100%; aspect-ratio: 16/9; min-height: 380px;">
-          <img src="images/torneo.jpg" alt="Torneos oficiales de pádel" style="width: 100%; height: 100%; object-fit: cover;" />
-          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(11,31,24,0.92) 100%);"></div>
-          <div style="position: absolute; bottom: 28px; left: 28px; right: 28px;">
-            <span style="font-size: 11.5px; font-weight: 800; color: #c8a24a; text-transform: uppercase; letter-spacing: 0.1em;">Competición</span>
-            <h3 class="apc-serif" style="margin: 4px 0 0; font-size: clamp(20px,3.2vw,30px); font-weight: 600; color: #f4efe0;">Torneos oficiales y competencia de alto nivel</h3>
-            <p style="margin: 4px 0 0; font-size: 14.5px; color: #cfc9b8;">Vibra con la emoción deportiva de los campeonatos de APC.</p>
-          </div>
-        </div>
-
-        <!-- Slider Controls -->
-        <div style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); z-index: 20;">
-          <button class="apc-slider-btn" onClick="{{prevGallery}}" aria-label="Foto anterior">
-            &#10094;
-          </button>
-        </div>
-        <div style="position: absolute; top: 50%; right: 16px; transform: translateY(-50%); z-index: 20;">
-          <button class="apc-slider-btn" onClick="{{nextGallery}}" aria-label="Foto siguiente">
-            &#10095;
-          </button>
-        </div>
-
-        <!-- Dots Indicator -->
-        <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 8px; z-index: 20;">
-          <button onClick="{{showGallery0}}" style="width: 12px; height: 12px; border-radius: 50%; border: none; background: {{dot0Bg}}; cursor: pointer; padding: 0;"></button>
-          <button onClick="{{showGallery1}}" style="width: 12px; height: 12px; border-radius: 50%; border: none; background: {{dot1Bg}}; cursor: pointer; padding: 0;"></button>
-          <button onClick="{{showGallery2}}" style="width: 12px; height: 12px; border-radius: 50%; border: none; background: {{dot2Bg}}; cursor: pointer; padding: 0;"></button>
-        </div>
-
-      </div>
-
-      <!-- Thumbnails Grid -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-        <div onClick="{{showGallery0}}" style="border-radius: 14px; overflow: hidden; cursor: pointer; border: 2px solid {{thumb0Border}}; aspect-ratio: 16/9;">
-          <img src="images/cancha.jpg" alt="Canchas" style="width: 100%; height: 100%; object-fit: cover;" />
-        </div>
-        <div onClick="{{showGallery1}}" style="border-radius: 14px; overflow: hidden; cursor: pointer; border: 2px solid {{thumb1Border}}; aspect-ratio: 16/9;">
-          <img src="images/cafeteria.jpg" alt="Cafetería" style="width: 100%; height: 100%; object-fit: cover;" />
-        </div>
-        <div onClick="{{showGallery2}}" style="border-radius: 14px; overflow: hidden; cursor: pointer; border: 2px solid {{thumb2Border}}; aspect-ratio: 16/9;">
-          <img src="images/torneo.jpg" alt="Torneos" style="width: 100%; height: 100%; object-fit: cover;" />
-        </div>
+      <div class="apc-gallery">
+        <figure class="apc-g apc-g-big">
+          <img src="images/torneo.jpg" alt="Torneos oficiales de pádel" />
+          <figcaption><span>Competición</span>Torneos y competencia de alto nivel</figcaption>
+        </figure>
+        <figure class="apc-g">
+          <img src="images/cancha.jpg" alt="Canchas panorámicas de pádel" />
+          <figcaption><span>Canchas</span>Cristal y césped profesional</figcaption>
+        </figure>
+        <figure class="apc-g">
+          <img src="images/cafeteria.jpg" alt="Cafetería y lounge del club" />
+          <figcaption><span>Zona social</span>Cafetería y terraza lounge</figcaption>
+        </figure>
       </div>
 
     </div>
   </section>
 
-  <!-- 8. UBICACIÓN Y CONTACTO (Mapa interactivo embedido + Horario + WhatsApp) -->
-  <section id="ubicacion" style="padding: clamp(64px,9vw,110px) 24px; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(200,162,74,0.12), transparent 60%), #0b1f18;">
-    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
-      
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px;">
-        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #c8a24a; text-transform: uppercase;">Ubicación & Contacto</span>
-        <h2 class="apc-serif" style="margin: 0; font-size: clamp(28px,4vw,44px); font-weight: 600;">¿Dónde encontrarnos?</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #cfc9b8;">Visítanos en Ambato. Contamos con fácil acceso, zona residencial segura y amplio parqueadero privado.</p>
+  <!-- 8. UBICACIÓN Y CONTACTO -->
+  <section id="ubicacion" class="apc-section" style="background: #0b1f18;">
+    <div class="apc-wrap" style="display: flex; flex-direction: column; gap: clamp(40px,6vw,64px);">
+
+      <div class="apc-head">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="apc-eyebrow">06 · Ubicación</span>
+          <h2 class="apc-h2">¿Dónde encontrarnos?</h2>
+        </div>
+        <p class="apc-lead" style="margin: 0; max-width: 420px;">Zona céntrica de fácil acceso, con parqueadero privado vigilado.</p>
       </div>
 
-      <div class="apc-location-grid" style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px; align-items: stretch;">
-        
-        <!-- Info Card -->
-        <div style="padding: clamp(28px,4vw,38px); border-radius: 22px; background: #0e2419; border: 1.5px solid rgba(200,162,74,0.3); display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
-          <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div>
-              <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.1em; color: #c8a24a; text-transform: uppercase;">Dirección Exacta</span>
-              <h3 style="margin: 4px 0 0; font-size: 20px; font-weight: 700; color: #f4efe0;">Lizardo Ruiz, entre Espejo y Joaquin Lalama</h3>
-              <p style="margin: 6px 0 0; font-size: 14.5px; color: #cfc9b8; line-height: 1.6;">Ambato, Tungurahua · Ecuador. Zona céntrica de fácil acceso con parqueadero privado vigilado.</p>
-              <div style="margin-top: 10px;">
-                <a href="https://maps.app.goo.gl/b1xZyWu5TaHV2Q948" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: #c8a24a; text-decoration: underline;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  Abrir en Google Maps / Cómo llegar
-                </a>
-              </div>
-            </div>
+      <div class="apc-location-grid">
 
-            <div style="padding: 16px; border-radius: 14px; background: rgba(18,41,31,0.8); border: 1px solid rgba(244,239,224,0.1); display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span style="font-size: 15px; font-weight: 700; color: #f4efe0;">Horario de Atención</span>
-              </div>
-              <div style="font-size: 14.5px; color: #e9e4d4; padding-left: 30px;">
-                Lunes a Domingo: <strong>06:00 am — 22:00 pm</strong>
-              </div>
-              <div style="font-size: 13px; color: #a9a294; padding-left: 30px;">
-                Turnos nocturnos con iluminación LED profesional.
-              </div>
-            </div>
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+          <div>
+            <span class="apc-kicker">Dirección</span>
+            <h3 class="apc-h3" style="font-size: clamp(24px,3vw,32px); margin-top: 10px;">Lizardo Ruiz, entre Espejo y Joaquín Lalama</h3>
+            <p class="apc-body" style="margin: 10px 0 0;">Ambato, Tungurahua · Ecuador.</p>
+            <a href="https://maps.app.goo.gl/b1xZyWu5TaHV2Q948" target="_blank" rel="noopener" class="apc-text-link" style="display: inline-block; margin-top: 16px;">Abrir en Google Maps <span aria-hidden="true">→</span></a>
+          </div>
 
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8a24a;">Canales de WhatsApp</span>
-              <a href="{{waLink}}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: #f4efe0;">
-                <span style="color: #22c55e;">●</span> Reservas de Cancha & General: <strong>+593 93 908 4371</strong>
-              </a>
-              <a href="{{waLinkKids}}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: #f4efe0;">
-                <span style="color: #6ee7b7;">●</span> Academia de Niños: <strong>+593 93 908 4371</strong>
-              </a>
-              <a href="{{waLinkStreetFit}}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: #f4efe0;">
-                <span style="color: #fbbf24;">●</span> Entrenamiento Físico (Street FIT): <strong>+593 96 371 4090</strong>
-              </a>
+          <div>
+            <span class="apc-kicker">Horario</span>
+            <div style="margin-top: 10px; font-size: 20px; font-weight: 700;">Lunes a domingo · 06:00 — 22:00</div>
+            <div class="apc-small" style="margin-top: 4px;">Turnos nocturnos con iluminación LED profesional.</div>
+          </div>
+
+          <div>
+            <span class="apc-kicker">WhatsApp</span>
+            <div style="margin-top: 6px;">
+              <a class="apc-row apc-wa" href="{{waLink}}" target="_blank" rel="noopener"><span>Reservas de cancha y general</span><strong>+593 93 908 4371</strong></a>
+              <a class="apc-row apc-wa" href="{{waLinkKids}}" target="_blank" rel="noopener"><span>Academia de niños</span><strong>+593 93 908 4371</strong></a>
+              <a class="apc-row apc-wa" href="{{waLinkStreetFit}}" target="_blank" rel="noopener"><span>Entrenamiento físico (Street FIT)</span><strong>+593 96 371 4090</strong></a>
             </div>
           </div>
 
-          <a class="apc-btn apc-btn-primary" href="{{waLink}}" target="_blank" rel="noopener" style="padding: 16px; font-size: 15px; width: 100%;">
-            Contactar por WhatsApp
-          </a>
+          <a class="apc-btn apc-btn-primary" href="{{waLink}}" target="_blank" rel="noopener" style="align-self: flex-start; padding: 16px 32px;">Contactar por WhatsApp</a>
         </div>
 
-        <!-- Google Maps Embed -->
-        <div style="border-radius: 22px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.3); min-height: 420px; box-shadow: 0 16px 40px rgba(0,0,0,0.35);">
-          <iframe 
-            src="https://maps.google.com/maps?q=-1.2365762,-78.6290563&hl=es&z=17&output=embed" 
-            width="100%" 
-            height="100%" 
-            style="border:0; min-height: 420px; display: block;" 
-            allowfullscreen="" 
-            loading="lazy" 
+        <div class="apc-map-box" style="border-radius: 6px; overflow: hidden; border: 1px solid rgba(200,162,74,0.35); min-height: 460px;">
+          <iframe
+            src="https://maps.google.com/maps?q=-1.2365762,-78.6290563&hl=es&z=17&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; min-height: 460px; display: block;"
+            allowfullscreen=""
+            loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Ubicación oficial de Ambato Pádel Center en Google Maps">
           </iframe>
@@ -934,16 +762,45 @@
       <!-- Social & Community -->
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #c8a24a; text-transform: uppercase;">Redes Sociales</span>
-        <a href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#c8a24a'" onmouseout="this.style.color='#cfc9b8'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <a href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="igFooterGrad" cx="18%" cy="100%" r="125%">
+                  <stop offset="0%" stop-color="#FFDD55"/>
+                  <stop offset="10%" stop-color="#FF543E"/>
+                  <stop offset="50%" stop-color="#C837AB"/>
+                  <stop offset="100%" stop-color="#4F5BD5"/>
+                </radialGradient>
+              </defs>
+              <rect width="24" height="24" rx="6" fill="url(#igFooterGrad)"/>
+              <rect x="5.25" y="5.25" width="13.5" height="13.5" rx="3.8" stroke="#ffffff" stroke-width="1.6" fill="none"/>
+              <circle cx="12" cy="12" r="3.2" stroke="#ffffff" stroke-width="1.6" fill="none"/>
+              <circle cx="15.8" cy="8.2" r="0.9" fill="#ffffff"/>
+            </svg>
+          </div>
           Instagram — @ambatopadelcenter
         </a>
-        <a href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#c8a24a'" onmouseout="this.style.color='#cfc9b8'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <a href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+              <path d="M15.5 12.3h-2.5V20h-3.2v-7.7H7.8V9.6h2v-1.7c0-2.2 1.3-3.4 3.3-3.4 1 0 1.9.1 1.9.1v2.3h-1.2c-1 0-1.4.7-1.4 1.4v1.3h2.6l-.5 2.7z" fill="#ffffff"/>
+            </svg>
+          </div>
           Facebook — Ambato Padel Center
         </a>
-        <a href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#c8a24a'" onmouseout="this.style.color='#cfc9b8'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a24a" stroke-width="1.8"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+        <a href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="6" fill="#000000"/>
+              <g transform="translate(1, 0.5)">
+                <path d="M14.5 7.8c-.8-.4-1.4-1-1.7-1.8V3.5h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.1c1.3.8 2.8 1.3 4.4 1.3V8c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#25F4EE"/>
+                <path d="M14.8 8c-.8-.4-1.4-1-1.7-1.8V3.7h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.3c1.3.8 2.8 1.3 4.4 1.3V8.2c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#FE2C55"/>
+                <path d="M14.6 7.9c-.8-.4-1.4-1-1.7-1.8V3.6h-2.2v10.8c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .6.1.8.2v-2.5c-.3 0-.5-.1-.8-.1-2.7 0-4.8 2.2-4.8 4.7s2.2 4.7 4.8 4.7 4.8-2.2 4.8-4.7V9.2c1.3.8 2.8 1.3 4.4 1.3V8.1c-1.1 0-2.1-.4-3-1.1v.9Z" fill="#FFFFFF"/>
+              </g>
+            </svg>
+          </div>
           TikTok — @ambatopadelcenter
         </a>
       </div>
@@ -962,7 +819,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="{{waLink}}" target="_blank" rel="noopener" aria-label="Reservar cancha por WhatsApp" style="position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #c8a24a; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(0,0,0,0.5); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+  <a class="apc-wa-float" href="{{waLink}}" target="_blank" rel="noopener" aria-label="Reservar cancha por WhatsApp" style="position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #c8a24a; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(0,0,0,0.5); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
     <svg width="28" height="28" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2.5C7.1 2.5 2.5 7.1 2.5 13c0 2 .56 3.9 1.57 5.5L2.5 23.5l5.1-1.5A10.4 10.4 0 0 0 13 23.5c5.9 0 10.5-4.6 10.5-10.5S18.9 2.5 13 2.5Z" stroke="#0b1f18" stroke-width="1.4"></path><path d="M9 9.6c.3-.9 1.1-.8 1.7.2.4.7.9 1.3.6 1.9-.3.6-.9.9-.6 1.5.5 1 1.5 2 2.6 2.5.6.3.9-.3 1.5-.6.6-.3 1.2.1 1.9.6 1 .6 1.1 1.4.3 1.7-2 .8-4.3-.2-5.9-1.9-1.6-1.6-2.7-3.9-1.9-5.9Z" fill="#0b1f18"></path></svg>
   </a>
 
@@ -974,8 +831,7 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: false,
-      galleryIndex: 0
+      menuOpen: false
     };
   }
 
@@ -997,8 +853,6 @@ class Component extends DCLogic {
     const waLinkStreetFit = 'https://wa.me/' + numberStreetFit + '?text=' + encodeURIComponent(streetFitText);
     const waLinkTorneo = 'https://wa.me/' + number + '?text=' + encodeURIComponent(tournamentText);
 
-    const gIdx = this.state.galleryIndex;
-
     return {
       waLink: waLink,
       waLinkClases: waLinkClases,
@@ -1007,25 +861,7 @@ class Component extends DCLogic {
       waLinkTorneo: waLinkTorneo,
       menuDisplay: this.state.menuOpen ? 'flex' : 'none',
       toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
-      closeMenu: () => this.setState({ menuOpen: false }),
-
-      gallerySlide0: gIdx === 0 ? 'block' : 'none',
-      gallerySlide1: gIdx === 1 ? 'block' : 'none',
-      gallerySlide2: gIdx === 2 ? 'block' : 'none',
-
-      dot0Bg: gIdx === 0 ? '#c8a24a' : 'rgba(244,239,224,0.3)',
-      dot1Bg: gIdx === 1 ? '#c8a24a' : 'rgba(244,239,224,0.3)',
-      dot2Bg: gIdx === 2 ? '#c8a24a' : 'rgba(244,239,224,0.3)',
-
-      thumb0Border: gIdx === 0 ? '#c8a24a' : 'rgba(244,239,224,0.15)',
-      thumb1Border: gIdx === 1 ? '#c8a24a' : 'rgba(244,239,224,0.15)',
-      thumb2Border: gIdx === 2 ? '#c8a24a' : 'rgba(244,239,224,0.15)',
-
-      nextGallery: () => this.setState({ galleryIndex: (gIdx + 1) % 3 }),
-      prevGallery: () => this.setState({ galleryIndex: (gIdx + 2) % 3 }),
-      showGallery0: () => this.setState({ galleryIndex: 0 }),
-      showGallery1: () => this.setState({ galleryIndex: 1 }),
-      showGallery2: () => this.setState({ galleryIndex: 2 })
+      closeMenu: () => this.setState({ menuOpen: false })
     };
   }
 }
