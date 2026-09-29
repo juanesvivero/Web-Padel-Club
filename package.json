@@ -1,0 +1,18 @@
+{
+  "name": "ambato-padel-center",
+  "version": "1.0.0",
+  "description": "Sitio web oficial de Ambato Pádel Center",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "start": "serve ."
+  },
+  "keywords": [
+    "padel",
+    "ambato",
+    "ecuador",
+    "padel-center"
+  ],
+  "author": "Ambato Pádel Center",
+  "license": "MIT"
+}
