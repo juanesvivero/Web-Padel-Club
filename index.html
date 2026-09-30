@@ -4,10 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ambato Pádel Center — La nueva experiencia de Pádel en Ambato</title>
+<meta name="description" content="Ambato Pádel Center — Canchas panorámicas techadas, academia de pádel y torneos en Ambato. Horarios de atención: Lunes a viernes de 06:00 a 22:00 y sábados a domingos de 06:00 a 22:00.">
+<meta property="og:title" content="Ambato Pádel Center — La nueva experiencia de Pádel en Ambato">
+<meta property="og:description" content="Ambato Pádel Center — Canchas panorámicas techadas, academia de pádel y torneos en Ambato. Horarios de atención: Lunes a viernes de 06:00 a 22:00 y sábados a domingos de 06:00 a 22:00.">
+<meta property="og:image" content="https://ambatopadelcenter.vercel.app/images/og-image.jpg">
+<meta property="og:url" content="https://ambatopadelcenter.vercel.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ambato Pádel Center — La nueva experiencia de Pádel en Ambato">
+<meta name="twitter:description" content="Ambato Pádel Center — Canchas panorámicas techadas, academia de pádel y torneos en Ambato. Horarios de atención: Lunes a viernes de 06:00 a 22:00 y sábados a domingos de 06:00 a 22:00.">
+<meta name="twitter:image" content="https://ambatopadelcenter.vercel.app/images/og-image.jpg">
+<link rel="canonical" href="https://ambatopadelcenter.vercel.app/">
 <link rel="icon" type="image/png" href="images/Logo.png">
+<meta name="theme-color" content="#0b1f18">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Ambato Pádel Center",
+  "url": "https://ambatopadelcenter.vercel.app/",
+  "image": "https://ambatopadelcenter.vercel.app/images/og-image.jpg",
+  "logo": "https://ambatopadelcenter.vercel.app/images/Logo.png",
+  "description": "Ambato Pádel Center — Canchas panorámicas techadas, academia de pádel y torneos en Ambato. Horarios de atención: Lunes a viernes de 06:00 a 22:00 y sábados a domingos de 06:00 a 22:00.",
+  "telephone": "+593939084371",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lizardo Ruiz, entre Espejo y Joaquín Lalama",
+    "addressLocality": "Ambato",
+    "addressRegion": "Tungurahua",
+    "addressCountry": "EC"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -1.2365762,
+    "longitude": -78.6290563
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "06:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "06:00",
+      "closes": "22:00"
+    }
+  ]
+}
+</script>
 <script src="./vendor/react.js"></script>
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
+<script src="./ui.js" defer></script>
+<script src="./analytics.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <x-dc>
@@ -22,12 +76,14 @@
   .apc-serif { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -0.03em; }
 
   /* Botones */
-  .apc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 14.5px; letter-spacing: 0.01em; transition: transform 0.15s ease, background 0.15s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
+  .apc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 14.5px; letter-spacing: 0.01em; transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
   .apc-btn:hover { transform: translateY(-2px); }
   .apc-btn-primary { background: #c8a24a; color: #0b1f18; }
   .apc-btn-primary:hover { background: #d9b665; }
   .apc-btn-dark { background: #0b1f18; color: #f4efe0; }
   .apc-btn-dark:hover { background: #17362a; }
+  .apc-btn-secondary { background: rgba(244,239,224,0.08); color: #f4efe0; border: 1px solid rgba(200,162,74,0.3); }
+  .apc-btn-secondary:hover { background: rgba(200,162,74,0.2); border-color: #c8a24a; color: #f4efe0; }
   .apc-text-link { font-size: 15px; font-weight: 700; color: #f4efe0; padding-bottom: 4px; border-bottom: 1px solid rgba(200,162,74,0.6); transition: color 0.15s ease, border-color 0.15s ease; }
   .apc-text-link:hover { color: #c8a24a; border-color: #c8a24a; }
 
@@ -111,6 +167,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    cursor: pointer;
   }
   .apc-clip-nav-btn {
     width: 44px;
@@ -195,6 +252,62 @@
   }
   .apc-programs-dots {
     display: none !important;
+  }
+  .apc-prog-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1.5px solid rgba(11,31,24,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0b1f18;
+    box-shadow: 0 2px 10px rgba(11,31,24,0.06);
+    transition: all 0.2s ease;
+  }
+  .apc-prog-nav-btn:hover {
+    background: #c8a24a;
+    border-color: #c8a24a;
+  }
+  .apc-pdot {
+    border: none;
+    padding: 0;
+    width: 8px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(11,31,24,0.22);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .apc-pdot.is-active, .apc-pdot-active {
+    width: 28px;
+    background: #c8a24a;
+  }
+  .apc-tdot {
+    border: none;
+    padding: 0;
+    width: 7px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(11,31,24,0.22);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .apc-tdot.is-active, .apc-tdot-active {
+    width: 24px;
+    background: #c8a24a;
+  }
+
+  .apc-footer-col a:hover {
+    color: #c8a24a !important;
+  }
+  .apc-social-link:hover {
+    color: #f4efe0 !important;
+  }
+  .apc-wa-float:hover {
+    transform: scale(1.08) !important;
   }
   .apc-meta-chips {
     display: flex;
@@ -627,7 +740,7 @@
       <!-- Foto Hero -->
       <div class="apc-hero-photo" style="position: relative; justify-self: end; width: 100%; max-width: 480px;">
         <div style="position: relative; width: 100%; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.3); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 25px rgba(200,162,74,0.12);">
-          <img src="images/APC/APC_dron.PNG" alt="Fachada e instalaciones de Ambato Pádel Center" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center;" />
+          <img src="images/APC/APC_dron.webp" alt="Fachada e instalaciones de Ambato Pádel Center" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center;" />
         </div>
       </div>
 
@@ -652,7 +765,6 @@
             Diseñamos un club pensado para todos: desde quienes dan sus primeros golpes y quieren divertirse en familia, hasta los jugadores más exigentes que buscan intensidad en cada torneo. Elige tu horario, arma tu pareja y ven a vivir el pádel con nosotros.
           </p>
         </div>
-
 
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <span style="font-size: 13px; font-weight: 600; color: #a9a294;">Síguenos · #AmbatoPadelCenter</span>
@@ -705,7 +817,7 @@
 
       <!-- Cancha -->
       <div class="apc-fac-row">
-        <img src="images/cancha.jpg" alt="Cancha panorámica de vidrio" class="apc-photo" style="aspect-ratio: 4 / 3;" />
+        <img src="images/cancha.webp" alt="Cancha panorámica de vidrio" class="apc-photo" style="aspect-ratio: 4 / 3;" />
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <h3 class="apc-h3">Canchas panorámicas de vidrio</h3>
           <p class="apc-body">Césped verde monofilamento de última generación y cristales templados panorámicos para un rebote perfecto.</p>
@@ -714,7 +826,7 @@
 
       <!-- Cafetería -->
       <div class="apc-fac-row rev">
-        <img src="images/cafeteria.jpg" alt="Cafetería y lounge social" class="apc-photo" style="aspect-ratio: 4 / 3;" />
+        <img src="images/cafeteria.webp" alt="Cafetería y lounge social" class="apc-photo" style="aspect-ratio: 4 / 3;" />
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <h3 class="apc-h3">Cafetería y lounge social</h3>
           <p class="apc-body">Disfruta de bebidas energéticas, café especial, snacks y una terraza para compartir con tus amigos tras cada partido.</p>
@@ -772,11 +884,11 @@
           <span class="apc-muted" style="font-size: 14px; font-weight: 600;">Metodología argentina · Clases personalizadas y grupales</span>
         </div>
 
-        <div class="apc-trainers" onscroll="const dots=this.nextElementSibling?.querySelectorAll('.apc-tdot'); if(dots && dots.length>=2){ const isSecond = this.scrollLeft > (this.scrollWidth - this.clientWidth) / 3; dots[0].style.width = isSecond ? '7px' : '24px'; dots[0].style.background = isSecond ? 'rgba(11,31,24,0.22)' : '#c8a24a'; dots[1].style.width = isSecond ? '24px' : '7px'; dots[1].style.background = isSecond ? '#c8a24a' : 'rgba(11,31,24,0.22)'; }">
+        <div class="apc-trainers" data-carousel-root="trainers">
 
           <div class="apc-trainer">
             <div style="width: 100%; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(11,31,24,0.08); border: 1px solid rgba(11,31,24,0.12);">
-              <img src="images/Entrenadores/Mateo Villamil.jpeg" alt="Mateo Villamil - Entrenador de Pádel" style="display: block; width: 100%; height: auto; object-fit: cover;" />
+              <img src="images/Entrenadores/mateo-villamil.webp" alt="Mateo Villamil - Entrenador de Pádel" style="display: block; width: 100%; height: auto; object-fit: cover;" />
             </div>
             <p class="apc-body" style="margin: 0;"><strong>Experiencia:</strong> más de 10 años como jugador y trayectoria formando a niños, adolescentes y adultos.</p>
             <div>
@@ -793,7 +905,7 @@
 
           <div class="apc-trainer">
             <div style="width: 100%; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(11,31,24,0.08); border: 1px solid rgba(11,31,24,0.12);">
-              <img src="images/Entrenadores/Matías Vendrell.jpeg" alt="Matías Vendrell - Entrenador &amp; Personal Trainer" style="display: block; width: 100%; height: auto; object-fit: cover;" />
+              <img src="images/Entrenadores/matias-vendrell.webp" alt="Matías Vendrell - Entrenador &amp; Personal Trainer" style="display: block; width: 100%; height: auto; object-fit: cover;" />
             </div>
             <p class="apc-body" style="margin: 0;"><strong>Experiencia:</strong> más de 10 años como jugador y 5 años como profesor de pádel.</p>
             <div>
@@ -812,8 +924,8 @@
 
         <!-- Indicador de carrusel en móvil -->
         <div class="apc-trainers-dots" style="display: none; justify-content: center; align-items: center; gap: 8px; margin-top: 16px;">
-          <button type="button" class="apc-tdot apc-tdot-active" aria-label="Ver Mateo Villamil" onclick="const el=this.closest('div').previousElementSibling; if(el) el.scrollTo({left: 0, behavior: 'smooth'});" style="border: none; padding: 0; width: 24px; height: 6px; border-radius: 999px; background: #c8a24a; cursor: pointer; transition: all 0.25s ease;"></button>
-          <button type="button" class="apc-tdot" aria-label="Ver Matías Vendrell" onclick="const el=this.closest('div').previousElementSibling; if(el) el.scrollTo({left: el.scrollWidth, behavior: 'smooth'});" style="border: none; padding: 0; width: 7px; height: 6px; border-radius: 999px; background: rgba(11,31,24,0.22); cursor: pointer; transition: all 0.25s ease;"></button>
+          <button type="button" class="apc-tdot apc-tdot-active" data-carousel="trainers" data-index="0" aria-label="Ver Mateo Villamil"></button>
+          <button type="button" class="apc-tdot" data-carousel="trainers" data-index="1" aria-label="Ver Matías Vendrell"></button>
         </div>
       </div>
 
@@ -826,22 +938,22 @@
           </div>
           <!-- Controles de navegación del carrusel (Solo visibles en móvil/tablet) -->
           <div class="apc-programs-nav" style="align-items: center; gap: 10px;">
-            <button type="button" aria-label="Plan anterior" onclick="const c=document.getElementById('apc-programs-carousel'); if(c) c.scrollBy({left: -c.clientWidth * 0.85, behavior: 'smooth'});" style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid rgba(11,31,24,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #0b1f18; box-shadow: 0 2px 10px rgba(11,31,24,0.06); transition: all 0.2s ease;" onmouseover="this.style.background='#c8a24a'; this.style.borderColor='#c8a24a';" onmouseout="this.style.background='#ffffff'; this.style.borderColor='rgba(11,31,24,0.15)';">
+            <button type="button" class="apc-prog-nav-btn" data-carousel="programs" data-step="-1" aria-label="Plan anterior">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <button type="button" aria-label="Siguiente plan" onclick="const c=document.getElementById('apc-programs-carousel'); if(c) c.scrollBy({left: c.clientWidth * 0.85, behavior: 'smooth'});" style="width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 1.5px solid rgba(11,31,24,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #0b1f18; box-shadow: 0 2px 10px rgba(11,31,24,0.06); transition: all 0.2s ease;" onmouseover="this.style.background='#c8a24a'; this.style.borderColor='#c8a24a';" onmouseout="this.style.background='#ffffff'; this.style.borderColor='rgba(11,31,24,0.15)';">
+            <button type="button" class="apc-prog-nav-btn" data-carousel="programs" data-step="1" aria-label="Siguiente plan">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
         </div>
 
         <!-- Contenedor del Carrusel -->
-        <div id="apc-programs-carousel" class="apc-programs-carousel" onscroll="const sL=this.scrollLeft; const mS=this.scrollWidth-this.clientWidth; if(mS>0){ const r=sL/mS; const aI=r<0.33?0:(r<0.67?1:2); const dots=this.parentElement?.querySelectorAll('.apc-pdot'); if(dots&&dots.length>=3){ dots.forEach((d,i)=>{ d.style.width=i===aI?'28px':'8px'; d.style.background=i===aI?'#c8a24a':'rgba(11,31,24,0.22)'; }); } }">
+        <div id="apc-programs-carousel" class="apc-programs-carousel" data-carousel-root="programs">
 
           <!-- Tarjeta 1: Pádel General -->
           <div id="clases-general" class="apc-prog-card">
             <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(11,31,24,0.08); border: 1px solid rgba(11,31,24,0.08);">
-              <img src="images/Pack Clases/Clases Generales.jpeg" alt="Paquetes de entrenamiento de pádel adultos y jóvenes" style="display: block; width: 100%; height: auto; object-fit: cover;" />
+              <img src="images/pack-clases/clases-generales.webp" alt="Paquetes de entrenamiento de pádel adultos y jóvenes" style="display: block; width: 100%; height: auto; object-fit: cover;" />
             </div>
             <div style="display: flex; justify-content: center; width: 100%; margin-top: auto; padding-top: 10px;">
               <a class="apc-btn apc-btn-dark" href="{{waLinkClases}}" target="_blank" rel="noopener" style="width: 100%; text-align: center; justify-content: center;">Consultar por clases</a>
@@ -851,7 +963,7 @@
           <!-- Tarjeta 2: Niños -->
           <div id="clases-ninos" class="apc-prog-card">
             <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(11,31,24,0.08); border: 1px solid rgba(11,31,24,0.08);">
-              <img src="images/Pack Clases/Entrenamiento Niños.jpeg" alt="Paquetes de entrenamiento de pádel para niños" style="display: block; width: 100%; height: auto; object-fit: cover;" />
+              <img src="images/pack-clases/entrenamiento-ninos.webp" alt="Paquetes de entrenamiento de pádel para niños" style="display: block; width: 100%; height: auto; object-fit: cover;" />
             </div>
             <div style="display: flex; justify-content: center; width: 100%; margin-top: auto; padding-top: 10px;">
               <a class="apc-btn apc-btn-dark" href="{{waLinkKids}}" target="_blank" rel="noopener" style="width: 100%; text-align: center; justify-content: center;">Inscribir en pádel niños</a>
@@ -861,7 +973,7 @@
           <!-- Tarjeta 3: Street FIT -->
           <div id="clases-streetfit" class="apc-prog-card">
             <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(11,31,24,0.08); border: 1px solid rgba(11,31,24,0.08);">
-              <img src="images/Pack Clases/APC x Streetfit.jpeg" alt="Clases de entrenamiento físico APC × Street FIT" style="display: block; width: 100%; height: auto; object-fit: cover;" />
+              <img src="images/pack-clases/apc-streetfit.webp" alt="Clases de entrenamiento físico APC × Street FIT" style="display: block; width: 100%; height: auto; object-fit: cover;" />
             </div>
             <div style="display: flex; justify-content: center; width: 100%; margin-top: auto; padding-top: 10px;">
               <a class="apc-btn apc-btn-dark" href="{{waLinkStreetFit}}" target="_blank" rel="noopener" style="width: 100%; text-align: center; justify-content: center;">Reservar APC × Street FIT</a>
@@ -872,9 +984,9 @@
 
         <!-- Indicador de puntos (dots) interactivos -->
         <div class="apc-programs-dots" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 24px;">
-          <button type="button" class="apc-pdot apc-pdot-active" aria-label="Ver Paquetes de Pádel" onclick="const c=document.getElementById('apc-programs-carousel'); if(c) c.scrollTo({left: 0, behavior: 'smooth'});" style="border: none; padding: 0; width: 28px; height: 7px; border-radius: 999px; background: #c8a24a; cursor: pointer; transition: all 0.25s ease;"></button>
-          <button type="button" class="apc-pdot" aria-label="Ver Pádel Niños" onclick="const c=document.getElementById('apc-programs-carousel'); if(c &amp;&amp; c.children[1]) c.scrollTo({left: c.children[1].offsetLeft - c.offsetLeft, behavior: 'smooth'});" style="border: none; padding: 0; width: 8px; height: 7px; border-radius: 999px; background: rgba(11,31,24,0.22); cursor: pointer; transition: all 0.25s ease;"></button>
-          <button type="button" class="apc-pdot" aria-label="Ver Street FIT" onclick="const c=document.getElementById('apc-programs-carousel'); if(c &amp;&amp; c.children[2]) c.scrollTo({left: c.children[2].offsetLeft - c.offsetLeft, behavior: 'smooth'});" style="border: none; padding: 0; width: 8px; height: 7px; border-radius: 999px; background: rgba(11,31,24,0.22); cursor: pointer; transition: all 0.25s ease;"></button>
+          <button type="button" class="apc-pdot apc-pdot-active" data-carousel="programs" data-index="0" aria-label="Ver Paquetes de Pádel"></button>
+          <button type="button" class="apc-pdot" data-carousel="programs" data-index="1" aria-label="Ver Pádel Niños"></button>
+          <button type="button" class="apc-pdot" data-carousel="programs" data-index="2" aria-label="Ver Street FIT"></button>
         </div>
       </div>
 
@@ -893,7 +1005,7 @@
       </div>
 
       <div style="position: relative; border-radius: 24px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.35); background: #071510;">
-        <img src="images/torneo.jpg" alt="Torneos en Ambato Pádel Center" class="apc-photo" style="aspect-ratio: 21 / 9; min-height: 280px; width: 100%; object-fit: cover; filter: brightness(0.55);" />
+        <img src="images/torneo.webp" alt="Torneos en Ambato Pádel Center" class="apc-photo" style="aspect-ratio: 21 / 9; min-height: 280px; width: 100%; object-fit: cover; filter: brightness(0.55);" />
         
         <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; background: rgba(11,31,24,0.4); backdrop-filter: blur(2px);">
           <span style="display: inline-block; padding: 6px 18px; background: rgba(200,162,74,0.22); border: 1px solid #c8a24a; color: #e5c46b; font-size: 13px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px;">Próximamente</span>
@@ -928,17 +1040,17 @@
           
           <!-- Slide 1 -->
           <div class="apc-clip-slide" style="{{clipSlide1Style}}">
-            <video id="apcVideo0" class="apc-reel-video" src="images/Clips/Clip1.mp4" playsinline webkit-playsinline muted loop preload="auto" onClick="{{toggleClipPlay}}"></video>
+            <video id="apcVideo0" class="apc-reel-video" src="images/Clips/Clip1.mp4" poster="images/Clips/Clip1-poster.webp" playsinline webkit-playsinline muted loop preload="none" onClick="{{toggleClipPlay}}"></video>
           </div>
 
           <!-- Slide 2 -->
           <div class="apc-clip-slide" style="{{clipSlide2Style}}">
-            <video id="apcVideo1" class="apc-reel-video" src="images/Clips/Clip2.mp4" playsinline webkit-playsinline muted loop preload="auto" onClick="{{toggleClipPlay}}"></video>
+            <video id="apcVideo1" class="apc-reel-video" src="images/Clips/Clip2.mp4" poster="images/Clips/Clip2-poster.webp" playsinline webkit-playsinline muted loop preload="none" onClick="{{toggleClipPlay}}"></video>
           </div>
 
           <!-- Slide 3 -->
           <div class="apc-clip-slide" style="{{clipSlide3Style}}">
-            <video id="apcVideo2" class="apc-reel-video" src="images/Clips/Clip3.mp4" playsinline webkit-playsinline muted loop preload="auto" onClick="{{toggleClipPlay}}"></video>
+            <video id="apcVideo2" class="apc-reel-video" src="images/Clips/Clip3.mp4" poster="images/Clips/Clip3-poster.webp" playsinline webkit-playsinline muted loop preload="none" onClick="{{toggleClipPlay}}"></video>
           </div>
 
           <!-- Botón de sonido sobre el reel -->
@@ -1041,7 +1153,7 @@
       <!-- Contact & Schedule -->
       <div class="apc-footer-col apc-footer-contact" style="display: flex; flex-direction: column; gap: 12px;">
         <span class="apc-footer-h" style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #c8a24a; text-transform: uppercase;">Contacto & Horarios</span>
-        <a href="https://maps.app.goo.gl/b1xZyWu5TaHV2Q948" target="_blank" rel="noopener" style="font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#c8a24a'" onmouseout="this.style.color='#cfc9b8'">
+        <a href="https://maps.app.goo.gl/b1xZyWu5TaHV2Q948" target="_blank" rel="noopener" style="font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;">
           Lizardo Ruiz, entre Espejo y Joaquin Lalama, Ambato
         </a>
         <span style="font-size: 14px; color: #cfc9b8;">Lunes a Domingo: 06:00 a 22:00</span>
@@ -1053,7 +1165,7 @@
       <div class="apc-footer-col apc-footer-social-col" style="display: flex; flex-direction: column; gap: 12px;">
         <span class="apc-footer-h" style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #c8a24a; text-transform: uppercase;">Síguenos · <span class="apc-footer-hashtag" style="color: #f4efe0; font-weight: 600; text-transform: none; letter-spacing: normal;">#AmbatoPadelCenter</span></span>
         <div class="apc-footer-socials" style="display: flex; flex-direction: column; gap: 12px;">
-          <a href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <a href="https://www.instagram.com/ambatopadelcenter/" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;">
             <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -1072,7 +1184,7 @@
             </div>
             <span>Instagram<span class="apc-social-handle"> — @ambatopadelcenter</span></span>
           </a>
-          <a href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <a href="https://www.facebook.com/p/Ambato-Padel-Center-61587497427649/" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;">
             <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="12" fill="#1877F2"/>
@@ -1081,7 +1193,7 @@
             </div>
             <span>Facebook<span class="apc-social-handle"> — Ambato Padel Center</span></span>
           </a>
-          <a href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;" onmouseover="this.style.color='#f4efe0'" onmouseout="this.style.color='#cfc9b8'">
+          <a href="https://www.tiktok.com/@ambatopadelcenter" target="_blank" rel="noopener" class="apc-social-link" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: #cfc9b8; transition: color 0.15s ease;">
             <div style="width: 22px; height: 22px; min-width: 22px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="24" height="24" rx="6" fill="#000000"/>
@@ -1104,7 +1216,7 @@
 
       <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #a9a294;">
         <span>Creado por</span>
-        <a href="https://jvstudio.vercel.app/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px; border-radius: 999px; background: rgba(200,162,74,0.12); border: 1px solid rgba(200,162,74,0.35); color: #f4efe0; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.background='#c8a24a'; this.style.color='#0b1f18'; this.style.borderColor='#c8a24a';" onmouseout="this.style.background='rgba(200,162,74,0.12)'; this.style.color='#f4efe0'; this.style.borderColor='rgba(200,162,74,0.35)';">
+        <a href="https://jvstudio.vercel.app/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px; border-radius: 999px; background: rgba(200,162,74,0.12); border: 1px solid rgba(200,162,74,0.35); color: #f4efe0; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; text-decoration: none; transition: all 0.2s ease;">
           <span>JV Studio</span>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
@@ -1120,7 +1232,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a class="apc-wa-float" href="{{waLink}}" target="_blank" rel="noopener" aria-label="Reservar cancha por WhatsApp" style="position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #c8a24a; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(0,0,0,0.5); transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+  <a class="apc-wa-float" href="{{waLink}}" target="_blank" rel="noopener" aria-label="Reservar cancha por WhatsApp" style="position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #c8a24a; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(0,0,0,0.5); transition: transform 0.2s ease;">
     <svg width="28" height="28" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2.5C7.1 2.5 2.5 7.1 2.5 13c0 2 .56 3.9 1.57 5.5L2.5 23.5l5.1-1.5A10.4 10.4 0 0 0 13 23.5c5.9 0 10.5-4.6 10.5-10.5S18.9 2.5 13 2.5Z" stroke="#0b1f18" stroke-width="1.4"></path><path d="M9 9.6c.3-.9 1.1-.8 1.7.2.4.7.9 1.3.6 1.9-.3.6-.9.9-.6 1.5.5 1 1.5 2 2.6 2.5.6.3.9-.3 1.5-.6.6-.3 1.2.1 1.9.6 1 .6 1.1 1.4.3 1.7-2 .8-4.3-.2-5.9-1.9-1.6-1.6-2.7-3.9-1.9-5.9Z" fill="#0b1f18"></path></svg>
   </a>
 
@@ -1156,7 +1268,6 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.syncVideo();
-    // Iniciar reproducción al primer toque o click en la página si el navegador bloquea autoplay
     const autoStarter = () => {
       this.syncVideo();
       document.removeEventListener('click', autoStarter);
@@ -1171,6 +1282,10 @@ class Component extends DCLogic {
     const number = ((this.props.whatsappNumber ?? defaultNumber).replace(/[^0-9]/g, '')) || defaultNumber;
     const numberKids = '593939084371';
     const numberStreetFit = '593963714090';
+
+    const addressText = 'Lizardo Ruiz, entre Espejo y Joaquín Lalama';
+    const hoursWeekdaysText = '06:00 a 22:00';
+    const hoursWeekendText = '06:00 a 22:00';
 
     const baseText = this.props.whatsappMessage ?? 'Hola, quiero reservar una cancha en Ambato Padel Center';
     const classGeneralText = 'Hola, deseo informacion y reservar paquetes de Clases de Pádel en Ambato Pádel Center';
@@ -1190,6 +1305,9 @@ class Component extends DCLogic {
     const muted = this.state.isClipMuted;
 
     return {
+      addressText: addressText,
+      hoursWeekdaysText: hoursWeekdaysText,
+      hoursWeekendText: hoursWeekendText,
       waLink: waLink,
       waLinkClases: waLinkClases,
       waLinkKids: waLinkKids,

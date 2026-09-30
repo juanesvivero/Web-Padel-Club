@@ -85,6 +85,7 @@ try {
   if (!csp) fail('vercel.json no define Content-Security-Policy');
   const scriptSrc = csp.split(';').map((d) => d.trim()).find((d) => d.startsWith('script-src')) || '';
   if (scriptSrc.includes("'unsafe-inline'")) fail("La CSP permite 'unsafe-inline' en script-src");
+  if (existsSync('support.js') && /new Function/.test(readFileSync('support.js', 'utf8')) && !scriptSrc.includes("'unsafe-eval'")) fail("support.js usa new Function: la CSP necesita 'unsafe-eval' en script-src o la pagina queda rota");
   if (all.some((h) => h.key === 'X-XSS-Protection')) fail('X-XSS-Protection esta obsoleta: quitala de vercel.json');
 } catch { fail('vercel.json no es JSON valido'); }
 for (const f of ['ui.js', 'analytics.js']) if (!existsSync(f)) fail(`Falta ${f}`);

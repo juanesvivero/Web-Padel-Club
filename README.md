@@ -1,21 +1,10 @@
-# Landing — Ambato Pádel Center — design reference
+# Ambato Pádel Center — sitio web
 
-This is a design mockup created in a visual design tool (an appifact
-design canvas), exported as a standalone page. Treat it as a REFERENCE
-MOCKUP, not production code: the markup and inline styles carry the
-design's precise values — colors, font sizes, spacing, radii, shadows,
-layout — which an implementation should replicate faithfully in its own
-components and styling system rather than copy wholesale.
+Sitio estático desplegado en Vercel.
 
-## Contents
+- `npm run dev` — sirve el sitio en local.
+- `npm run check` — verifica que teléfono, dirección, horarios, dominio y archivos coincidan, y que la CSP sea coherente.
 
-- `Main.dc.html` — the artboard (a Design Component: an `<x-dc>`
-  template + a small logic class). The values to replicate live in its
-  inline `style="…"` attributes and the `<helmet><style>` block.
-- `support.js`, `vendor/react*.js` — the runtime that renders the
-  component in a browser; not part of the design.
-
-## Viewing
-
-Serve the folder (e.g. `python3 -m http.server`) and open `Main.dc.html`;
-some browsers block the scripts over file://.
+Archivos principales: `index.html` (plantilla y datos), `ui.js` (interacciones), `analytics.js` (eventos), `vercel.json` (headers y CSP).
+`support.js` y `vendor/` son el runtime que renderiza la plantilla; la CSP permite `'unsafe-eval'` por él.
+Antes de cambiar de dominio, actualiza canonical, OG, JSON-LD, `robots.txt` y `sitemap.xml`.
