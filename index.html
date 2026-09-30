@@ -711,7 +711,14 @@
 
   <!-- 2. HERO SECTION (Pantalla Principal con Carrusel/Slider + Barra de Noticias) -->
   <section id="inicio" style="background: #0b1f18; padding: clamp(40px,6vw,80px) 24px clamp(56px,7vw,96px);">
-    <div class="apc-hero-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px,6vw,88px); align-items: center;">
+    <div class="apc-hero-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px,6vw,88px); align-items: center;">
+
+      <!-- Foto Hero -->
+      <div class="apc-hero-photo" style="position: relative; justify-self: start; width: 100%; max-width: 480px;">
+        <div style="position: relative; width: 100%; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.3); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 25px rgba(200,162,74,0.12);">
+          <img src="images/APC/APC_dron.webp" alt="Fachada e instalaciones de Ambato Pádel Center" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center;" />
+        </div>
+      </div>
 
       <!-- Texto -->
       <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 28px;">
@@ -721,7 +728,7 @@
         </div>
 
         <h1 class="apc-serif" style="margin: 0; font-size: clamp(46px,7.6vw,100px); line-height: 0.94; font-weight: 800; letter-spacing: -0.04em; color: #f4efe0;">
-          Pádel, <span style="color: #c8a24a;">a tu manera.</span>
+          Juega pádel, <span style="color: #c8a24a;">a tu manera.</span>
         </h1>
 
         <p style="margin: 0; max-width: 470px; font-size: clamp(16px,1.5vw,18px); line-height: 1.7; color: #cfc9b8;">
@@ -734,13 +741,6 @@
             Reservar cancha
           </a>
           <a class="apc-text-link" href="#clases">Ver clases <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-
-      <!-- Foto Hero -->
-      <div class="apc-hero-photo" style="position: relative; justify-self: end; width: 100%; max-width: 480px;">
-        <div style="position: relative; width: 100%; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(200,162,74,0.3); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 25px rgba(200,162,74,0.12);">
-          <img src="images/APC/APC_dron.webp" alt="Fachada e instalaciones de Ambato Pádel Center" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center;" />
         </div>
       </div>
 
